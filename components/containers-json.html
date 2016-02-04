@@ -1,0 +1,57 @@
+<script>
+    class ContainersJson extends HTMLTableElement {
+
+        constructor() {
+        }
+
+        set containers(val) {
+            this._containers = val;
+            this.update();
+        }
+
+        get containers() {
+            return this._containers;
+        }
+
+        createdCallback() {
+            let templateTable = `
+            <table>
+            <tr>
+                <th style="border: 1px solid black; color: blue">Names</th>
+                <th style="border: 1px solid black">IMG</th>
+            </tr>
+            </table>
+            `;
+            this.innerHTML = templateTable;
+        }
+
+        update() {
+            let templateLines = "";
+
+            for (let o of this.containers) {
+                let namesContent = 'Names: ' + o.Image;
+                let imgContent = '<img style="height: 100px;" src="https://raw.githubusercontent.com/docker-library/docs/master/' + o.Image + '/logo.png"/>';
+                let templateLine = `
+                <tr>
+                    <td style="border: 1px solid black">${namesContent}</td>
+                    <td style="border: 1px solid black">${imgContent}</td>
+                </tr>
+                `;
+                templateLines = templateLines + templateLine;
+            }
+            let templateTable = `
+            <table>
+                <tr>
+                    <th style="border: 1px solid black">Names</th>
+                    <th style="border: 1px solid black">IMG</th>
+                </tr>
+                ${templateLines}
+            </table>
+            `;
+            this.innerHTML = templateTable;
+        }
+    }
+
+    document.registerElement('containers-json', ContainersJson);
+
+</script>
