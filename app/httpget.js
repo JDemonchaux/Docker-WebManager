@@ -10,7 +10,7 @@ function httpGet(url) {
                     // Something went wrong (404 etc.)
                     reject(new Error(this.statusText));
                 }
-            }
+            };
             request.onerror = function () {
                 reject(new Error(
                     'XMLHttpRequest Error: '+this.statusText));
