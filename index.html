@@ -1,13 +1,44 @@
 <html>
 <header>
-    <link rel="import" href="components/containers-json.html">
+    <link rel="import" href="app/components/containers-json.html"/>
+    <link rel="stylesheet" href="app/assets/css/materialize.min.css"/>
+    <link rel="stylesheet" href="app/assets/css/material.icons.css"/>
+    <link rel="stylesheet" href="app/assets/css/layout.css"/>
 </header>
+<head>
+    <title>Docker WebManager</title>
+</head>
 <body>
 
-<containers-json id="test"></containers-json>
+<div class="row">
+<nav class="white">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo right">Logo</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+<main>
+    <div class="row">
+        <div class="col s2">
+            <containers-json id="test"></containers-json>
+        </div>
+        <div class="col s10">
+            contenu
+        </div>
+    </div>
+</main>
 
+
+
+<script src="app/assets/js/jquery-2.1.4.min.js"></script>
+<script src="app/assets/js/materialize.min.js"></script>
 <script src="node_modules/webcomponents.js/webcomponents-lite.min.js"></script>
-<script src="httpget.js"></script>
+<script src="app/httpget.js"></script>
 <script>
     var jsontest = JSON.parse('[{"Id":"3acfa8ade93be35512008759581e6d48b8dbd9949e6208611f661d146573046a","Names":["jenkins"],"Image":"jenkins","ImageID":"285c9f0f9d3d23fe2763061c53cf9858001cb11c1b1b27dadf58d8f132f2aa7f","Command":"/bin/tini -- /usr/local/bin/jenkins.sh","Created":1454529693,"Ports":[{"PrivatePort":50000,"Type":"tcp"},{"PrivatePort":8080,"Type":"tcp"}],"Labels":{},"Status":"Up 51 minutes","HostConfig":{"NetworkMode":"default"}},{"Id":"3acfa8ade93be35512008759581e6d48b8dbd9949e6208611f661d146573046a","Names":["wordpress"],"Image":"wordpress","ImageID":"285c9f0f9d3d23fe2763061c53cf9858001cb11c1b1b27dadf58d8f132f2aa7f","Command":"/bin/tini -- /usr/local/bin/jenkins.sh","Created":1454529693,"Ports":[{"PrivatePort":50000,"Type":"tcp"},{"PrivatePort":8080,"Type":"tcp"}],"Labels":{},"Status":"Up 51 minutes","HostConfig":{"NetworkMode":"default"}}]');
     var ele = document.getElementById('test');

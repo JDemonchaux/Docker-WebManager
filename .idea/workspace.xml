@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec6dd7b7-771d-47bc-87c9-5e6cbb9f293d" name="Default" comment="" />
+    <list default="true" id="ec6dd7b7-771d-47bc-87c9-5e6cbb9f293d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCKER_ELEMENT/.vs/DOCKER_ELEMENT/v14/.suo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCKER_ELEMENT/DOCKER_ELEMENT.sln" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/components/containers-json.html" afterPath="$PROJECT_DIR$/app/components/containers-json.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/httpget.js" afterPath="$PROJECT_DIR$/app/httpget.js" />
+    </list>
     <ignored path="DOCKER_ELEMENT.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,42 +34,9 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09529148">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.46896553">
+              <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="httpget.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/httpget.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="containers-json.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/containers-json.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.653847">
-              <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-              <folding>
-                <marker date="1454610735308" expanded="true" signature="356:549" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="373:528" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="402:438" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="478:501" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="824:838" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="992:1166" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="1025:1048" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="1102:1125" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="1315:1544" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="1336:1490" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="1369:1392" placeholder="..." />
-                <marker date="1454610735308" expanded="true" signature="1436:1459" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -71,8 +47,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -84,6 +64,8 @@
       <list>
         <option value="$PROJECT_DIR$/components/containers-json.html" />
         <option value="$PROJECT_DIR$/httpget.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/assets/css/layout.css" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -93,6 +75,14 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -106,7 +96,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -124,6 +114,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -138,7 +129,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DOCKER_ELEMENT" />
+              <option name="myItemId" value="Docker-Web-Manager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -148,19 +139,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DOCKER_ELEMENT" />
+              <option name="myItemId" value="Docker-Web-Manager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -170,6 +160,13 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Prog\Web\Docker-Web-Manager\app" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -387,26 +384,6 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoRunFileConfiguration" factoryName="Go Single File">
-      <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <method />
-    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -527,6 +504,13 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -643,14 +627,15 @@
       <workItem from="1454528686585" duration="10710000" />
       <workItem from="1454592767185" duration="6241000" />
       <workItem from="1454606201563" duration="5379000" />
+      <workItem from="1454613885577" duration="2498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22330000" />
+    <option name="totallyTimeSpent" value="24828000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -659,22 +644,22 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1359275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -692,28 +677,65 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/httpget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/containers-json.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding>
+            <marker date="1454613810164" expanded="true" signature="356:549" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="373:528" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="402:438" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="478:501" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="824:838" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="992:1166" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1025:1048" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1102:1125" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1315:1544" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1336:1490" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1369:1392" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1436:1459" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/containers-json.html">
+    <entry file="file://$PROJECT_DIR$/app/components/containers-json.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454610735308" expanded="true" signature="356:549" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="373:528" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="402:438" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="478:501" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="824:838" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="992:1166" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1025:1048" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1102:1125" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1315:1544" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1336:1490" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1369:1392" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1436:1459" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="356:549" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="373:528" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="402:438" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="478:501" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="824:838" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="992:1166" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1025:1048" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1102:1125" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1315:1544" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1336:1490" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1369:1392" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1436:1459" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -726,60 +748,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/containers-json.html">
+    <entry file="file://$PROJECT_DIR$/app/components/containers-json.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454610735308" expanded="true" signature="356:549" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="373:528" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="402:438" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="478:501" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="824:838" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="992:1166" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1025:1048" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1102:1125" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1315:1544" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1336:1490" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1369:1392" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1436:1459" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="356:549" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="373:528" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="402:438" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="478:501" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="824:838" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="992:1166" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1025:1048" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1102:1125" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1315:1544" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1336:1490" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1369:1392" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1436:1459" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/httpget.js">
+    <entry file="file://$PROJECT_DIR$/app/components/containers-json.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3264368">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding>
+            <marker date="1454613810164" expanded="true" signature="356:549" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="373:528" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="402:438" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="478:501" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="824:838" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="992:1166" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1025:1048" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1102:1125" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1315:1544" placeholder="..." />
+            <marker date="1454613810164" expanded="true" signature="1336:1490" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1369:1392" placeholder="..." />
+            <marker date="1454613810164" expanded="false" signature="1436:1459" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/httpget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3794643">
           <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/containers-json.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.653847">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding>
-            <marker date="1454610735308" expanded="true" signature="356:549" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="373:528" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="402:438" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="478:501" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="824:838" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="992:1166" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1025:1048" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1102:1125" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1315:1544" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1336:1490" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1369:1392" placeholder="..." />
-            <marker date="1454610735308" expanded="true" signature="1436:1459" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09529148">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.46896553">
+          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
           <folding />
         </state>
       </provider>
