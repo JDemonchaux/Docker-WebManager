@@ -15,6 +15,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
 
+  // Sets app default URL Dcoker api
+  app.apiUrl = 'http://192.168.0.10:2375/images/json';
   // Sets app default base URL
   app.baseUrl = '/Docker-WebManager/app/';
   if (window.location.port === '') {  // if production
