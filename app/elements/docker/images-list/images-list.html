@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
 
-</body>
-</html>
+<dom-module id="images-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            span {
+                @apply(--paper-font-body1);
+            }
+        </style>
+
+        <template is="dom-bind">
+            <iron-ajax url="{{apiUrl}}" last-response="{{data}}" auto></iron-ajax>
+            <iron-list items="[[data]]" as="item">
+                <template>
+                    <div>
+                        Name: [[item.name]]
+                    </div>
+                </template>
+            </iron-list>
+        </template>
+
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'images-list',
+
+                properties: {
+                    items: {
+                        type: Array,
+                        notify: true,
+                    }
+                }
+            });
+        })();
+    </script>
+</dom-module>
