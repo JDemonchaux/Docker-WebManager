@@ -1,3 +1,47 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-styles/typography.html">
 
+<dom-module id="containers-list">
+
+    <iron-ajax url="{{apiUrl}}" last-response="{{data}}" auto></iron-ajax>
+    <iron-list items="[[data]]" as="containers">
+        <template>
+            <table>
+                <tr>
+                    <th>Image</th>
+                </tr>
+                <tr>
+                    <td>Name: [[containers.Image]]</td>
+                </tr>
+            </table>
+        </template>
+    </iron-list>
+
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'containers-list',
+
+                properties: {
+                    items: {
+                        type: Array,
+                        notify: true,
+                    }
+                },
+
+                ready: function () {
+                    this.items = [
+                        'Responsive Web App boilerplate',
+                        'Iron Elements and Paper Elements',
+                        'End-to-end Build Tooling (including Vulcanize)',
+                        'Unit testing with Web Component Tester',
+                        'Routing with Page.js',
+                        'Offline support with the Platinum Service Worker Elements'
+                    ];
+                }
+            });
+        })();
+    </script>
+</dom-module>
