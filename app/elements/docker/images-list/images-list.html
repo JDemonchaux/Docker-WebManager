@@ -14,7 +14,7 @@
         </style>
 
 
-        <iron-ajax url="[[apiUrl]]" last-response="{{data}}" auto></iron-ajax>
+        <iron-ajax url="[[apiUrl]]images/json" last-response="{{data}}" auto></iron-ajax>
         <iron-list items="[[data]]" as="item">
             <template>
                 <div>
@@ -23,19 +23,27 @@
             </template>
         </iron-list>
 
+        <template is="dom-repeat" items="{{data}}">
+            <li><span>{{item.Id}}</span></li>
+            <iron-list is="dom-repeat" items="{{item}}" as="i" >
+                <template>
+                    <div tabindex$="[[tabIndex]]">
+                        Name: [[i]]
+                    </div>
+                </template>
+            </iron-list>
+
+        </template>
 
     </template>
 
     <script>
-        var apiUrl = "http://192.168.0.10:2375/images/json";
         (function () {
             'use strict';
-
             Polymer({
                 is: 'images-list',
-
                 properties: {
-                    apiURL: string
+                    apiUrl: String
                 }
             });
         })();
