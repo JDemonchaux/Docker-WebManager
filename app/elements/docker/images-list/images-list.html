@@ -13,7 +13,6 @@
             }
         </style>
 
-
         <iron-ajax url="[[apiUrl]]images/json" last-response="{{data}}" auto></iron-ajax>
         <iron-list items="[[data]]" as="item">
             <template>
@@ -25,13 +24,6 @@
 
         <template is="dom-repeat" items="{{data}}">
             <li><span>{{item.Id}}</span></li>
-            <iron-list is="dom-repeat" items="{{item}}" as="i" >
-                <template>
-                    <div tabindex$="[[tabIndex]]">
-                        Name: [[i]]
-                    </div>
-                </template>
-            </iron-list>
 
         </template>
 
