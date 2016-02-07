@@ -16,7 +16,7 @@
     var app = document.querySelector('#app');
 
     // Sets app default URL Dcoker api
-    app.apiUrl = 'http://192.168.0.15:2375/';
+    app.apiUrl = 'http://192.168.0.10:2375/';
     // Sets app default base URL
     app.baseUrl = '/Docker-WebManager/app/';
     if (window.location.port === '') {  // if production
@@ -89,56 +89,5 @@
         app.closeDrawer();
         next();
     }
-
-    // Routes
-    page('*', scrollToTop, closeDrawer, function(ctx, next) {
-        next();
-    });
-
-    page('/', function() {
-        app.route = 'home';
-    });
-
-    page(app.baseUrl, function() {
-        app.route = 'home';
-    });
-
-    page('/users', function() {
-        app.route = 'users';
-    });
-
-    page('/users/:name', function(data) {
-        app.route = 'user-info';
-        app.params = data.params;
-    });
-
-    page('/contact', function() {
-        app.route = 'contact';
-    });
-
-    page('/containers', function() {
-        app.route = 'containers';
-    });
-
-    page('/containers/:id', function(data) {
-        app.route = 'containers-info';
-        app.params = data.params;
-    });
-
-    page('/images', function() {
-        app.route = 'images';
-    });
-
-    // 404
-    page('*', function() {
-        app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
-        app.$.toast.show();
-        page.redirect(app.baseUrl);
-    });
-
-    // add #! before urls
-    page({
-        hashbang: true
-    });
 
 })(document);

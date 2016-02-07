@@ -68,20 +68,15 @@
                     <span>{{toDate(value)}}</span>
                 </template>
             </paper-datatable-column>
-            <paper-datatable-column header="Action" property="ImageID">
+            <paper-datatable-column header="Action" property="Id" type="String" >
                 <template>
-                    <a class="link" on-click="goTo" href="{{value}}">
-                        <iron-icon icon="info"></iron-icon>
-                        <span>See Details</span>
+                    <a href$="{{baseUrl}}containers/{{value}}" data-route="images" on-tap="ontap">
+                        <paper-button raised>Le button PSM</paper-button>
                     </a>
                 </template>
             </paper-datatable-column>
         </paper-datatable>
 
-
-        <a class="hidden" data-route="container" href$="{{baseUrl}}containers/">
-            <span>Images</span>
-        </a>
     </template>
 
     <script>
@@ -109,18 +104,24 @@
                     var d = new Date(value * 1000);
                     return (d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear());
                 },
-
-                goTo: function (e) {
-                    let value = e.currentTarget.getAttribute('href');
-                    let el = document.querySelector("a.hidden");
-                    el.href += value;
-                    console.log(el.href);
-                    let event = new Event('click');
-                    //el.dispatchEvent(event);
+                ontap: function(e){
+                    var route = e.currentTarget.getAttribute('href');
+                    page.redirect(route);
+                    console.log(route);
                 }
+
+                //goTo: function (e) {
+                //    let value = e.currentTarget.getAttribute('href');
+                //    let el = document.querySelector("a.hidden");
+                //    el.href += value;
+                //    console.log(el.href);
+                //    let event = new Event('click');
+                //el.dispatchEvent(event);
+                //}
             });
         })();
 
 
     </script>
+
 </dom-module>
