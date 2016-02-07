@@ -1,0 +1,63 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-styles/typography.html">
+
+<dom-module id="containers-status">
+    <template>
+
+        <style is="custom_style">
+            .green-icon {
+                color:green;
+            }
+            .red-icon {
+                color:red;
+            }
+        </style>
+
+        <template is="dom-if" if="{{isUp}}">
+            <iron-icon icon="av:fiber-manual-record" class="green-icon"></iron-icon>
+            <span>{{statusString}}</span>
+        </template>
+
+        <template is="dom-if" if="{{isDown}}">
+            <iron-icon icon="av:fiber-manual-record" class="red-icon"></iron-icon>
+            <span>{{statusString}}</span>
+        </template>
+
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+            let isUp = false;
+            let isDown = false;
+            let statusString = "";
+
+            Polymer({
+                is: 'containers-status',
+
+                properties: {
+                    status: {
+                        type: String,
+                        notify: true
+                    }
+                },
+
+                ready: function() {
+                    if (this.status.indexOf("Up") >= 0) {
+                        this.isUp = true;
+                        this.isDown = false;
+                        this.statusString = this.status.substring(3);
+
+                    } else if (this.status.indexOf("Exit") >= 0) {
+                        this.isDown = true;
+                        this.isUp = false;
+                        this.statusString = this.status.substring(7);
+                    }
+                }
+            });
+        })();
+
+
+    </script>
+
+</dom-module>

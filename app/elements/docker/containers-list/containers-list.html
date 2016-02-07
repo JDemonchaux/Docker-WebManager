@@ -15,6 +15,10 @@
                 height: 45px;
             }
 
+            a > paper-button {
+                color:black !important;
+            }
+
             a.link {
                 text-decoration: none;
                 color: rgba(0, 0, 0, .87) !important;
@@ -23,6 +27,22 @@
 
             a.hidden {
                 display: none;
+            }
+
+            table, th, td {
+                border: none;
+            }
+
+            thead, tr {
+                border-bottom: 1px solid #d0d0d0;
+            }
+
+            td, th {
+                padding: 0px 5px;
+                display: table-cell;
+                text-align: left;
+                vertical-align: middle;
+                border-radius: 2px;
             }
 
         </style>
@@ -49,18 +69,40 @@
 
 
         <paper-datatable data="{{items}}" selectable>
-            <paper-datatable-column header="Names" property="Names" sortable>
+            <paper-datatable-column header="Status" property="Status">
+                <template>
+                    <containers-status status="{{value}}"></containers-status>
+                </template>
             </paper-datatable-column>
-            <paper-datatable-column header="Image" property="Image" sortable>
+            <paper-datatable-column header="Names" property="Names">
+            </paper-datatable-column>
+            <paper-datatable-column header="Image" property="Image">
                 <template>
                     <span>{{value}}</span>
                 </template>
             </paper-datatable-column>
             <paper-datatable-column header="Ports" type="Object" property="Ports">
                 <template>
-                    <p>Private Ports : {{value.0.PrivatePort}}</p>
-                    <p>Public Ports : {{value.0.PublicPort}}</p>
-                    <p>Type : {{value.0.Type}}</p>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>IP</th>
+                            <th>Public port</th>
+                            <th>Private port</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <template is="dom-repeat" items="{{value}}" as="port">
+                            <tr>
+                                <td>{{port.IP}}</td>
+                                <td>{{port.PrivatePort}}</td>
+                                <td>{{port.PublicPort}}</td>
+                                <td>{{port.Type}}</td>
+                            </tr>
+                        </template>
+                        </tbody>
+                    </table>
                 </template>
             </paper-datatable-column>
             <paper-datatable-column header="Created" property="Created" sortable>
@@ -68,10 +110,13 @@
                     <span>{{toDate(value)}}</span>
                 </template>
             </paper-datatable-column>
-            <paper-datatable-column header="Action" property="Id" type="String" >
+            <paper-datatable-column header="Action" property="Id" type="String">
                 <template>
                     <a href$="{{baseUrl}}containers/{{value}}" data-route="images" on-tap="ontap">
-                        <paper-button raised>Le button PSM</paper-button>
+                        <paper-button raised>Details</paper-button>
+                    </a>
+                    <a>
+                        <paper-icon-button icon="av:play-arrow"></paper-icon-button>
                     </a>
                 </template>
             </paper-datatable-column>
@@ -104,20 +149,25 @@
                     var d = new Date(value * 1000);
                     return (d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear());
                 },
-                ontap: function(e){
+                ontap: function (e) {
                     var route = e.currentTarget.getAttribute('href');
                     page.redirect(route);
                     console.log(route);
-                }
+                },
 
-                //goTo: function (e) {
-                //    let value = e.currentTarget.getAttribute('href');
-                //    let el = document.querySelector("a.hidden");
-                //    el.href += value;
-                //    console.log(el.href);
-                //    let event = new Event('click');
-                //el.dispatchEvent(event);
-                //}
+                isUp(status) {
+                    if (status.indexOf("up") >= 0) {
+                        console.log("up");
+                        return isTrue;
+                    }
+                },
+
+                isExit(status) {
+                    if (status.indexOf("Exit") >= 0) {
+                        console.log("down");
+                        return isTrue;
+                    }
+                }
             });
         })();
 
