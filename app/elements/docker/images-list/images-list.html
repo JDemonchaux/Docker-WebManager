@@ -14,18 +14,21 @@
         </style>
 
         <iron-ajax url="[[apiUrl]]images/json" last-response="{{data}}" auto></iron-ajax>
-        <iron-list items="[[data]]" as="item">
+        <iron-list items="[[data]]" as="item" >
             <template>
                 <div>
-                    Name: [[item.name]]
+                    Id: [[item.Id]]
                 </div>
             </template>
         </iron-list>
 
-        <template is="dom-repeat" items="{{data}}">
-            <li><span>{{item.Id}}</span></li>
-
-        </template>
+        <iron-list items="[[data]]" as="item" col="name;gjhgjh;jhgjhg" >
+            <template>
+                <div>
+                    Id: [[item.Id]]
+                </div>
+            </template>
+        </iron-list>
 
     </template>
 

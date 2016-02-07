@@ -16,7 +16,7 @@
     var app = document.querySelector('#app');
 
     // Sets app default URL Dcoker api
-    app.apiUrl = 'http://192.168.0.10:2375/';
+    app.apiUrl = 'http://192.168.0.15:2375/';
     // Sets app default base URL
     app.baseUrl = '/Docker-WebManager/app/';
     if (window.location.port === '') {  // if production

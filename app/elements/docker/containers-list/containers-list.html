@@ -27,11 +27,11 @@
 
         </style>
 
-        <!--<iron-ajax url="[[apiUrl]]containers/json" last-response="{{items}}" auto></iron-ajax>-->
-        <iron-ajax url="http://localhost/Docker-WebManager/containers-json.json"
+        <iron-ajax url="[[apiUrl]]containers/json?all=1" last-response="{{items}}" auto></iron-ajax>
+        <!--<iron-ajax url="http://localhost/Docker-WebManager/containers-json.json"
                    last-response="{{items}}"
                    auto>
-        </iron-ajax>
+        </iron-ajax>-->
         <paper-toolbar class="white">
             <paper-button>
                 <iron-icon icon="add"></iron-icon>
