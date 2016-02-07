@@ -73,4 +73,72 @@
         app.$.paperDrawerPanel.closeDrawer();
     };
 
+
+    // Removes end / from app.baseUrl which page.base requires for production
+    if (window.location.port === '') {  // if production
+        page.base(app.baseUrl.replace(/\/$/, ''));
+    }
+
+    // Middleware
+    function scrollToTop(ctx, next) {
+        app.scrollPageToTop();
+        next();
+    }
+
+    function closeDrawer(ctx, next) {
+        app.closeDrawer();
+        next();
+    }
+
+    // Routes
+    page('*', scrollToTop, closeDrawer, function(ctx, next) {
+        next();
+    });
+
+    page('/', function() {
+        app.route = 'home';
+    });
+
+    page(app.baseUrl, function() {
+        app.route = 'home';
+    });
+
+    page('/users', function() {
+        app.route = 'users';
+    });
+
+    page('/users/:name', function(data) {
+        app.route = 'user-info';
+        app.params = data.params;
+    });
+
+    page('/contact', function() {
+        app.route = 'contact';
+    });
+
+    page('/containers', function() {
+        app.route = 'containers';
+    });
+
+    page('/containers/:id', function(data) {
+        app.route = 'containers-info';
+        app.params = data.params;
+    });
+
+    page('/images', function() {
+        app.route = 'images';
+    });
+
+    // 404
+    page('*', function() {
+        app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
+        app.$.toast.show();
+        page.redirect(app.baseUrl);
+    });
+
+    // add #! before urls
+    page({
+        hashbang: true
+    });
+
 })(document);

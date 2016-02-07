@@ -4,21 +4,91 @@
 <dom-module id="containers-list">
     <template>
 
-        <iron-ajax url="[[apiUrl]]containers/json" last-response="{{data}}" auto></iron-ajax>
-        <iron-list items="[[data]]" as="item">
-            <template>
-                <div>
-                    Name: [[item.Image]]
-                </div>
-            </template>
-        </iron-list>
+        <style is="custom_style">
+            paper-toolbar.white {
+                --paper-toolbar-background: white !important;
+                color: black !important;
+            }
+
+            paper-icon-button {
+                width: 45px;
+                height: 45px;
+            }
+
+            a.link {
+                text-decoration: none;
+                color: rgba(0, 0, 0, .87) !important;
+                /*@apply(--paper-button);*/
+            }
+
+            a.hidden {
+                display: none;
+            }
+
+        </style>
+
+        <!--<iron-ajax url="[[apiUrl]]containers/json" last-response="{{items}}" auto></iron-ajax>-->
+        <iron-ajax url="http://localhost/Docker-WebManager/containers-json.json"
+                   last-response="{{items}}"
+                   auto>
+        </iron-ajax>
+        <paper-toolbar class="white">
+            <paper-button>
+                <iron-icon icon="add"></iron-icon>
+                Create
+            </paper-button>
+            <paper-button>
+                <iron-icon icon="create"></iron-icon>
+                Update
+            </paper-button>
+            <paper-button>
+                <iron-icon icon="delete"></iron-icon>
+                Delete
+            </paper-button>
+        </paper-toolbar>
 
 
+        <paper-datatable data="{{items}}" selectable>
+            <paper-datatable-column header="Names" property="Names" sortable>
+            </paper-datatable-column>
+            <paper-datatable-column header="Image" property="Image" sortable>
+                <template>
+                    <span>{{value}}</span>
+                </template>
+            </paper-datatable-column>
+            <paper-datatable-column header="Ports" type="Object" property="Ports">
+                <template>
+                    <p>Private Ports : {{value.0.PrivatePort}}</p>
+                    <p>Public Ports : {{value.0.PublicPort}}</p>
+                    <p>Type : {{value.0.Type}}</p>
+                </template>
+            </paper-datatable-column>
+            <paper-datatable-column header="Created" property="Created" sortable>
+                <template>
+                    <span>{{toDate(value)}}</span>
+                </template>
+            </paper-datatable-column>
+            <paper-datatable-column header="Action" property="ImageID">
+                <template>
+                    <a class="link" on-click="goTo" href="{{value}}">
+                        <iron-icon icon="info"></iron-icon>
+                        <span>See Details</span>
+                    </a>
+                </template>
+            </paper-datatable-column>
+        </paper-datatable>
+
+
+        <a class="hidden" data-route="container" href$="{{baseUrl}}containers/">
+            <span>Images</span>
+        </a>
     </template>
 
     <script>
-        (function() {
+        (function () {
             'use strict';
+
+//            template.containers = JSON.parse('[ { "Id": "8dfafdbc3a40", "Names":["/boring_feynman"], "Image": "ubuntu:latest", "ImageID": "d74508fb6632491cea586a1fd7d748dfc5274cd6fdfedee309ecdcbc2bf5cb82", "Command": "echo 1", "Created": 1367854155, "Status": "Exit 0", "Ports": [{"PrivatePort": 2222, "PublicPort": 3333, "Type": "tcp"}], "Labels": { "com.example.vendor": "Acme", "com.example.license": "GPL", "com.example.version": "1.0" }, "SizeRw": 12288, "SizeRootFs": 0 }, { "Id": "9cd87474be90", "Names":["/coolName"], "Image": "ubuntu:latest", "ImageID": "d74508fb6632491cea586a1fd7d748dfc5274cd6fdfedee309ecdcbc2bf5cb82", "Command": "echo 222222", "Created": 1367854155, "Status": "Exit 0", "Ports": [], "Labels": {}, "SizeRw": 12288, "SizeRootFs": 0 }, { "Id": "3176a2479c92", "Names":["/sleepy_dog"], "Image": "ubuntu:latest", "ImageID": "d74508fb6632491cea586a1fd7d748dfc5274cd6fdfedee309ecdcbc2bf5cb82", "Command": "echo 3333333333333333", "Created": 1367854154, "Status": "Exit 0", "Ports":[], "Labels": {}, "SizeRw":12288, "SizeRootFs":0 }, { "Id": "4cb07b47f9fb", "Names":["/running_cat"], "Image": "ubuntu:latest", "ImageID": "d74508fb6632491cea586a1fd7d748dfc5274cd6fdfedee309ecdcbc2bf5cb82", "Command": "echo 444444444444444444444444444444444", "Created": 1367854152, "Status": "Exit 0", "Ports": [], "Labels": {}, "SizeRw": 12288, "SizeRootFs": 0 } ]')
 
             Polymer({
                 is: 'containers-list',
@@ -27,9 +97,30 @@
                     apiUrl: {
                         type: String,
                         notify: true
+                    },
+                    baseUrl: {
+                        type: String,
+                        notify: true
                     }
+                },
+
+                // Converti timestamp to date
+                toDate: function (value) {
+                    var d = new Date(value * 1000);
+                    return (d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear());
+                },
+
+                goTo: function (e) {
+                    let value = e.currentTarget.getAttribute('href');
+                    let el = document.querySelector("a.hidden");
+                    el.href += value;
+                    console.log(el.href);
+                    let event = new Event('click');
+                    //el.dispatchEvent(event);
                 }
             });
         })();
+
+
     </script>
 </dom-module>
