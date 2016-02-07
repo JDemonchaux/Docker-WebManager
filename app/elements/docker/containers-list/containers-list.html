@@ -116,7 +116,7 @@
                         <paper-button raised>Details</paper-button>
                     </a>
                     <a>
-                        <paper-icon-button icon="av:play-arrow"></paper-icon-button>
+                        <paper-icon-button icon="av:play-arrow" id="{{value}}" on-click="start"></paper-icon-button>
                     </a>
                 </template>
             </paper-datatable-column>
@@ -167,6 +167,22 @@
                         console.log("down");
                         return isTrue;
                     }
+                },
+
+                start: function(e) {
+                    let url = this.apiUrl + "containers/" + e.currentTarget.getAttribute("id") + "/start";
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200) {
+                                success(JSON.parse(xhr.responseText));
+                            } else {
+                                error(xhr.responseText);
+                            }
+                        }
+                    };
+                    xhr.open('POST', url, e.currentTarget.getAttribute("id"));
+                    xhr.send();
                 }
             });
         })();
