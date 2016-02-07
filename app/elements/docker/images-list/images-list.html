@@ -13,22 +13,26 @@
             }
         </style>
 
-        <iron-ajax url="[[apiUrl]]images/json" last-response="{{data}}" auto></iron-ajax>
-        <iron-list items="[[data]]" as="item" >
-            <template>
-                <div>
-                    Id: [[item.Id]]
-                </div>
-            </template>
-        </iron-list>
+        <iron-ajax url="[[apiUrl]]images/json?all=1" last-response="{{data}}" auto></iron-ajax>
 
-        <iron-list items="[[data]]" as="item" col="name;gjhgjh;jhgjhg" >
-            <template>
-                <div>
-                    Id: [[item.Id]]
-                </div>
-            </template>
-        </iron-list>
+        <paper-datatable data="{{data}}" selectable>
+            <paper-datatable-column header="RepoTags" type="Object" property="RepoTags">
+                <template>
+                    <span>
+                        <iron-list items="[[value]]" as="repo">
+                            <template>
+                                <span>{{repo}}</span>
+                            </template>
+                        </iron-list>
+                    </span>
+                </template>
+            </paper-datatable-column>
+            <paper-datatable-column header="Created" property="Created" sortable>
+                <template>
+                    <span>{{toDate(value)}}</span>
+                </template>
+            </paper-datatable-column>
+        </paper-datatable>
 
     </template>
 
@@ -39,6 +43,25 @@
                 is: 'images-list',
                 properties: {
                     apiUrl: String
+                },
+
+                // Converti timestamp to date
+                toDate: function (value) {
+                    var d = new Date(value * 1000);
+                    return (d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear());
+                },
+
+                log: function (items) {
+                    console.log(items);
+                },
+
+                _toArray: function (obj) {
+                    return Object.keys(obj).map(function (key) {
+                        return {
+                            name: key,
+                            value: obj[key]
+                        };
+                    });
                 }
             });
         })();
