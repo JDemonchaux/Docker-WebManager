@@ -8,7 +8,7 @@ import (
 
 func containers(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
-
+	log.Println("index")
 	DATA := new(ListContainers)
 	DATA.Get()
 
@@ -17,7 +17,7 @@ func containers(w http.ResponseWriter, req *http.Request) {
 		log.Println(err)
 	}
 
-	tmpl.ExecuteTemplate(w, "content", DATA)
+	tmpl.ExecuteTemplate(w, "index", DATA)
 
 	req.Body.Close()
 }
