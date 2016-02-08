@@ -12,7 +12,7 @@ func containers(w http.ResponseWriter, req *http.Request) {
 	DATA := new(ListContainers)
 	DATA.Get()
 
-	tmpl, err := template.ParseFiles("appWeb/content.html")
+	tmpl, err := template.ParseFiles("appWeb/index.html")
 	if err != nil {
 		log.Println(err)
 	}
