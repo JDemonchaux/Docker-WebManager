@@ -24,15 +24,29 @@ table, tr, td, th {
 }
 
 .statusIcon.container-running>i {
-    color:green;
+    color:green !important;
 }
 .statusIcon.container-paused>i {
-    color:orange;
+    color:orange !important;
 }
 .statusIcon.container-stopped>i {
-    color:red;
+    color:red !important;
 }
 
-.btPlay.container-running {
+td.status > a {
+    text-decoration: none;
+    color:black;
+}
+
+a.btPlay {
+    color:green;
+}
+
+.disabled > button {
+    color: rgba(0,0,0,.26);
+    cursor: auto;
+}
+
+.disabled {
 
 }

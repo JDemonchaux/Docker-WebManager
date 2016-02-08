@@ -39,7 +39,8 @@
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><img src="app/images/logo.png" alt="Docker WebManager" description="Docker WebManager"/></span>
+        <span class="mdl-layout-title"><img src="app/images/logo.png" alt="Docker WebManager"
+                                            description="Docker WebManager"/></span>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="">Containers</a>
             <a class="mdl-navigation__link" href="">Images</a>
@@ -75,20 +76,27 @@
                         {{range .}}
                         <tr>
                             <td class="status">
-                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}">
+                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}" disabled>
                                     <i class="material-icons">fiber_manual_record</i>
                                 </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon btPlay {{.StatusView}}">
-                                    <i class="material-icons">play_arrow</i>
-                                </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon btPause {{.StatusView}}">
-                                    <i class="material-icons">pause</i>
-                                </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon btStop {{.StatusView}}">
-                                    <i class="material-icons">stop</i>
-                                </button>
+                                <a href="/containers/start/{{.ID}}" class="btPlay {{.StatusView}}">
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">play_arrow</i>
+                                    </button>
+                                </a>
+                                <a href="#!" class="btPause {{.StatusView}}">
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">pause</i>
+                                    </button>
+                                </a>
+                                <a href="#!" class="btStop {{.StatusView}}">
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">stop</i>
+                                    </button>
+                                </a>
+                                <span>{{.Status}}</span>
                             </td>
-                            <td>{{.Status}}</td>
+                            <td>Node here</td>
                             <td>
                                 {{range .Names}}
                                 {{.}}
@@ -114,15 +122,24 @@
 <script src="app/js/jquery-2.1.4.min.js"></script>
 <script src="app/js/material.min.js"></script>
 <script>
-    "use strict"
-    let disableButton = document.querySelectorAll(".btPlay.container-running, .btPlay.container-paused, " +
-            ".btPause.container-stopped, .btStop.container-paused, .btStop.container-stopped");
+//    "use strict"
+//    let disableButton = document.querySelectorAll(".btPlay.container-running, .btPlay.container-paused, " +
+//            ".btPause.container-stopped, .btStop.container-paused, .btStop.container-stopped");
+//
+//    for (let i = 0; i < disableButton.length; i++) {
+//        disableButton[i].href = "#!";
+//        Object.setProperty(disableButton[i].childNodes[0], "disabled", true);
 
-    for (let i = 0; i < disableButton.length; i++) {
-        disableButton[i].disabled = true;
-    }
+//    }
 
     $(document).ready(function () {
+        $(".btPlay.container-running, .btPlay.container-paused, .btPause.container-stopped, .btStop.container-paused, .btStop.container-stopped").each(function() {
+            $(this).on('click', function(e) {
+                e.preventDefault();
+            });
+            $(this).addClass("disabled");
+            $(this).find(">:first-child").prop("disabled", "disabled");
+        })
     });
 </script>
 </body>
