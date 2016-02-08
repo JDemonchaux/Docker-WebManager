@@ -1,7 +1,20 @@
 {{define "content"}}
-
-{{range .Name}}
-<p>Yo {{.}}</p>
-{{end}}
-
+<table>
+    <tr>
+        <th>Status</th>
+        <th></th>
+        <th>Node</th>
+        <th>image</th>
+        <th>ID</th>
+    </tr>
+    {{range .}}
+    <tr>
+        <td>{{.Status}}</td>
+        <td></td>
+        <td></td>
+        <td>{{.Image}}</td>
+        <td>{{.ID}}</td>
+    </tr>
+    {{end}}
+</table>
 {{end}}
