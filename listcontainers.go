@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 )
 
-type ContainersJson struct {
+type ListContainers []struct {
 	ID string `json:"Id"`
 	Names []string `json:"Names"`
 	Image string `json:"Image"`
@@ -44,9 +44,8 @@ type ContainersJson struct {
 	   } `json:"NetworkSettings"`
 }
 
-type ContainersJsonArr []ContainersJson
 
-func (x *ContainersJsonArr)Decode(r io.Reader) (err error) {
+func (x *ListContainers)Decode(r io.Reader) (err error) {
 	err = json.NewDecoder(r).Decode(x)
 	return
 }
