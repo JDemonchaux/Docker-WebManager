@@ -36,6 +36,7 @@
 </head>
 <body>
 
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Docker WebManager</span>
@@ -63,7 +64,7 @@
                     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                         <thead>
                         <tr>
-                            <th class="status">Status</th>
+                            <th class="small">Status</th>
                             <th>Node</th>
                             <th>Name</th>
                             <th>Image</th>
@@ -73,26 +74,27 @@
                         <tbody>
                         {{range .}}
                         <tr>
-                            <td>
-                                <button id="status" class="mdl-button mdl-js-button mdl-button--icon">
+                            <td class="status">
+                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}">
                                     <i class="material-icons">fiber_manual_record</i>
                                 </button>
-                                <div class="mdl-tooltip mdl-tooltip--left" for="status">
-                                    Up 5 minutes
-                                </div>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                <button class="mdl-button mdl-js-button mdl-button--icon btPlay {{.StatusView}}">
                                     <i class="material-icons">play_arrow</i>
                                 </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                <button class="mdl-button mdl-js-button mdl-button--icon btPause {{.StatusView}}">
                                     <i class="material-icons">pause</i>
                                 </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                <button class="mdl-button mdl-js-button mdl-button--icon btStop {{.StatusView}}">
                                     <i class="material-icons">stop</i>
                                 </button>
                             </td>
-                            <td>String ici</td>
-                            <td>Names</td>
-                            <td>.Image</td>
+                            <td>{{.Status}}</td>
+                            <td>
+                                {{range .Names}}
+                                {{.}}
+                                {{end}}
+                            </td>
+                            <td>{{.Image}}</td>
                             <td>
                                 <button class="mdl-button mdl-js-button mdl-button--icon">
                                     <i class="material-icons">search</i>
@@ -108,7 +110,21 @@
     </main>
 </div>
 
+
+<script src="app/js/jquery-2.1.4.min.js"></script>
 <script src="app/js/material.min.js"></script>
+<script>
+    "use strict"
+    let disableButton = document.querySelectorAll(".btPlay.container-running, .btPlay.container-paused, " +
+            ".btPause.container-stopped, .btStop.container-paused, .btStop.container-stopped");
+
+    for (let i = 0; i < disableButton.length; i++) {
+        disableButton[i].disabled = true;
+    }
+
+    $(document).ready(function () {
+    });
+</script>
 </body>
 </html>
 {{end}}

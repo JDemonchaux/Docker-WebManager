@@ -6,6 +6,20 @@ table, tr, td, th {
     text-align: left !important;
 }
 
-.status {
+.small {
     width:1rem;
+}
+
+.statusIcon.container-running>i {
+    color:green;
+}
+.statusIcon.container-paused>i {
+    color:orange;
+}
+.statusIcon.container-stopped>i {
+    color:red;
+}
+
+.btPlay.container-running {
+
 }
