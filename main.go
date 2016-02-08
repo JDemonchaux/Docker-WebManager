@@ -9,18 +9,6 @@ const url  = "http://192.168.0.254:2375/"
 
 func main() {
 	server()
-	DATA := new(ListContainers)
-	DATA.Get()
-
-	for _, d := range *DATA {
-		log.Println(d.Image)
-		in := new(InspectContainer)
-		log.Println(in.Args)
-		for _,i := range in.Args{
-			log.Println(i)
-		}
-	}
-
 }
 
 
