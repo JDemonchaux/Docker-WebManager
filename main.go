@@ -3,27 +3,31 @@ package main
 import (
 	"log"
 	"net/http"
-	"io/ioutil"
-	"bytes"
 )
 
+const url  = "http://192.168.0.17:2375/"
+
 func main() {
-	resp, err := http.Get("http://10.0.50.96:2375/containers/json?all=1")
-	if err != nil {
-		log.Panicln(err)
-	}
+	DATA := new(ListContainers)
+	DATA.Get()
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Panicln(err)
+	for _, d := range *DATA {
+		log.Println(d.Image)
+		in := new(InspectContainer)
+		log.Println(in.Args)
+		for _,i := range in.Args{
+			log.Println(i)
+		}
 	}
-	DATA := new(ContainersJsonArr)
+	go server()
+	for{
 
-	DATA.Decode(bytes.NewReader(body))
-	for _, d := range DATA {
-		log.Println(d.ID)
 	}
-	resp.Body.Close()
-
 }
 
+
+func server(){
+	http.Handle("/", http.FileServer(http.Dir("./appweb")))
+	log.Println("Serving at localhost:1234...")
+	log.Fatal(http.ListenAndServe(":1234", nil))
+}
