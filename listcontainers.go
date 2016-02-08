@@ -3,6 +3,9 @@ package main
 import (
 	"io"
 	"encoding/json"
+	"net/http"
+	"io/ioutil"
+	"bytes"
 )
 
 type ListContainers []struct {
@@ -47,5 +50,23 @@ type ListContainers []struct {
 
 func (x *ListContainers)Decode(r io.Reader) (err error) {
 	err = json.NewDecoder(r).Decode(x)
+	return
+}
+
+func (x *ListContainers)Get() (err error){
+	resp, err := http.Get(url + "containers/json?all=1")
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	x.Decode(bytes.NewReader(body))
+
+	resp.Body.Close()
 	return
 }

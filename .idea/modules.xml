@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Backend Docker Management.iml" filepath="$PROJECT_DIR$/Backend Docker Management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Docker-WebManager.iml" filepath="$PROJECT_DIR$/Docker-WebManager.iml" />
     </modules>
   </component>
 </project>
