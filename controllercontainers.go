@@ -88,12 +88,18 @@ func containers(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	tmpl, err := template.ParseFiles("appWeb/index.html")
+	tmpl, err := template.ParseFiles("appWeb/header.html","appWeb/index.html","appWeb/footer.html")
+
 	if err != nil {
 		log.Println(err)
 	}
 
+	tmpl.ExecuteTemplate(w, "header", data)
 	tmpl.ExecuteTemplate(w, "index", data)
-
+	tmpl.ExecuteTemplate(w, "footer", data)
 	req.Body.Close()
+}
+
+func containersInspect (w http.ResponseWriter, req *http.Request) {
+	return
 }
