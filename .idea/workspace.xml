@@ -2545,12 +2545,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/styles/shared-styles.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/bower.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/containers-json.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Inspectcontainer.go" afterPath="$PROJECT_DIR$/Inspectcontainer.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listcontainers.go" afterPath="$PROJECT_DIR$/listcontainers.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
     </list>
     <ignored path="Backend Docker Management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -2579,8 +2574,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3888889">
-              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.6111111">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#14#43#0" expanded="true" />
               </folding>
@@ -3187,12 +3182,12 @@
       <option name="number" value="Default" />
       <updated>1454934574387</updated>
       <workItem from="1454934576233" duration="4219000" />
-      <workItem from="1454939616963" duration="4695000" />
+      <workItem from="1454939616963" duration="4891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8914000" />
+    <option name="totallyTimeSpent" value="9110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -3288,8 +3283,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3888889">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.6111111">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#14#43#0" expanded="true" />
           </folding>
