@@ -27,9 +27,26 @@
                     </span>
                 </template>
             </paper-datatable-column>
+
+            <paper-datatable-column header="Logo" type="String" property="RepoTags">
+                <template>
+                    <docker-logo name="{{value}}"></docker-logo>
+                </template>
+            </paper-datatable-column>
+
             <paper-datatable-column header="Created" property="Created" sortable>
                 <template>
                     <span>{{toDate(value)}}</span>
+                </template>
+            </paper-datatable-column>
+            <paper-datatable-column header="Action" property="Id" type="String">
+                <template>
+                    <a href$="{{baseUrl}}images/{{value}}" data-route="images" on-tap="ontap">
+                        <paper-button raised>Details</paper-button>
+                    </a>
+                    <a>
+                        <paper-icon-button icon="av:play-arrow" id="{{value}}" on-click="start"></paper-icon-button>
+                    </a>
                 </template>
             </paper-datatable-column>
         </paper-datatable>
@@ -54,6 +71,11 @@
                 log: function (items) {
                     console.log(items);
                 },
+                ontap: function (e) {
+                    var route = e.currentTarget.getAttribute('href');
+                    page.redirect(route);
+                    console.log(route);
+                },
 
                 _toArray: function (obj) {
                     return Object.keys(obj).map(function (key) {
@@ -65,5 +87,6 @@
                 }
             });
         })();
+
     </script>
 </dom-module>
