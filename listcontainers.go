@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"io/ioutil"
 	"bytes"
+	"regexp"
 )
 
 type ListContainers []struct {
@@ -45,6 +46,8 @@ type ListContainers []struct {
 					   } `json:"bridge"`
 			    } `json:"Networks"`
 	   } `json:"NetworkSettings"`
+	//custom
+	StatusView string
 }
 
 func (x *ListContainers)Decode(r io.Reader) (err error) {
@@ -67,5 +70,16 @@ func (x *ListContainers)Get() (err error){
 	x.Decode(bytes.NewReader(body))
 
 	resp.Body.Close()
+	for _,d := range *x {
+		if b,_ := regexp.MatchString("Up", d.Status); b != false {
+			d.StatusView = "running"
+		}
+		if b,_ := regexp.MatchString("Paused", d.Status); b != false {
+			d.StatusView ="paused"
+		}
+		if b,_ := regexp.MatchString("Exited", d.Status); b != false {
+			d.StatusView = "stopped"
+		}
+	}
 	return
 }
