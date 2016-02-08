@@ -84,7 +84,8 @@
                                         <i class="material-icons">play_arrow</i>
                                     </button>
                                 </a>
-                                <a href="/containers/pause/{{.ID}}" class="btPause {{.StatusView}}">
+                                <a {{if eq .StatusView "container-paused"}} href="/containers/unpause/{{.ID}}" {{else}}
+                                href="/containers/pause/{{.ID}}"{{end}}  class="btPause {{.StatusView}}">
                                     <button class="mdl-button mdl-js-button mdl-button--icon">
                                         <i class="material-icons">pause</i>
                                     </button>
