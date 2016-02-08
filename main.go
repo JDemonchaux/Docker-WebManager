@@ -19,10 +19,9 @@ func main() {
 			log.Println(i)
 		}
 	}
-	go server()
-	for{
+	server()
 
-	}
+
 }
 
 
