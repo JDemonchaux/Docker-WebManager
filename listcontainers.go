@@ -47,7 +47,6 @@ type ListContainers []struct {
 	   } `json:"NetworkSettings"`
 }
 
-
 func (x *ListContainers)Decode(r io.Reader) (err error) {
 	err = json.NewDecoder(r).Decode(x)
 	return

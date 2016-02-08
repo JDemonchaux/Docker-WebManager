@@ -5,9 +5,10 @@ import (
 	"net/http"
 )
 
-const url  = "http://192.168.0.17:2375/"
+const url  = "http://192.168.0.254:2375/"
 
 func main() {
+	server()
 	DATA := new(ListContainers)
 	DATA.Get()
 
@@ -19,14 +20,13 @@ func main() {
 			log.Println(i)
 		}
 	}
-	server()
-
 
 }
 
 
 func server(){
 	http.Handle("/", http.FileServer(http.Dir("./appweb")))
+	http.HandleFunc("/containers",containers)
 	log.Println("Serving at localhost:1234...")
 	log.Fatal(http.ListenAndServe(":1234", nil))
 }
