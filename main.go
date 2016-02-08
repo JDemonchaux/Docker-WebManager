@@ -25,7 +25,7 @@ func main() {
 
 
 func server(){
-	http.Handle("/app", http.FileServer(http.Dir("./appweb")))
+	http.Handle("/app/", http.FileServer(http.Dir("./appweb")))
 	//http.HandleFunc("/containers",containers)
 	http.HandleFunc("/",containers)
 	log.Println("Serving at localhost:1234...")
