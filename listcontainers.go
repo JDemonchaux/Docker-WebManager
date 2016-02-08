@@ -72,13 +72,13 @@ func (x *ListContainers)Get() (err error){
 	resp.Body.Close()
 	for _,d := range *x {
 		if b,_ := regexp.MatchString("Up", d.Status); b != false {
-			d.StatusView = "running"
+			d.StatusView = "containers-running"
 		}
 		if b,_ := regexp.MatchString("Paused", d.Status); b != false {
-			d.StatusView ="paused"
+			d.StatusView ="containers-paused"
 		}
 		if b,_ := regexp.MatchString("Exited", d.Status); b != false {
-			d.StatusView = "stopped"
+			d.StatusView = "containers-stopped"
 		}
 	}
 	return
