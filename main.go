@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-const url  = "http://192.168.0.254:2375/"
+const url  = "http://10.254.253.252:2375/"
 const baseUrl  = "http://127.0.0.1:1234/"
 
 func main() {

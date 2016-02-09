@@ -94,12 +94,21 @@ func containers(w http.ResponseWriter, req *http.Request) {
 		log.Println(err)
 	}
 
-	tmpl.ExecuteTemplate(w, "header", data)
+	tmpl.ExecuteTemplate(w, "header", nil)
 	tmpl.ExecuteTemplate(w, "index", data)
-	tmpl.ExecuteTemplate(w, "footer", data)
+	tmpl.ExecuteTemplate(w, "footer", nil)
 	req.Body.Close()
 }
 
 func containersInspect (w http.ResponseWriter, req *http.Request) {
-	return
+	tmpl, err := template.ParseFiles("appWeb/header.html","appWeb/container-detail.html","appWeb/footer.html")
+
+	if err != nil {
+		log.Println(err)
+	}
+
+	tmpl.ExecuteTemplate(w, "header", nil)
+	tmpl.ExecuteTemplate(w, "index", nil)
+	tmpl.ExecuteTemplate(w, "footer", nil)
+	req.Body.Close()
 }
