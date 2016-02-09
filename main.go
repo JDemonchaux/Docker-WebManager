@@ -5,7 +5,8 @@ import (
 	"net/http"
 )
 
-const url  = "http://10.254.253.252:2375/"
+//const url  = "http://10.254.253.252:2375/"
+const url  = "http://192.168.0.254:2375/"
 const baseUrl  = "http://127.0.0.1:1234/"
 
 func main() {
@@ -18,7 +19,7 @@ func server(){
 	//http.HandleFunc("/containers",containers)
 	http.HandleFunc("/",containers)
 
-	http.HandleFunc("/containers/", containersInspect)
+	http.HandleFunc("/containers/inspect/", containersInspect)
 	http.HandleFunc("/containers/restart/", containersRestart)
 	http.HandleFunc("/containers/start/", containersStart)
 	http.HandleFunc("/containers/stop/", containersStop)

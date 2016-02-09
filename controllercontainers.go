@@ -17,7 +17,7 @@ func containersStart(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w,req,baseUrl,http.StatusFound)
+	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }
 func containersStop(w http.ResponseWriter, req *http.Request) {
@@ -29,7 +29,7 @@ func containersStop(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w,req,baseUrl,http.StatusFound)
+	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }
 func containersPause(w http.ResponseWriter, req *http.Request) {
@@ -41,7 +41,7 @@ func containersPause(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w,req,baseUrl,http.StatusFound)
+	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }
 func containersRestart(w http.ResponseWriter, req *http.Request) {
@@ -53,7 +53,7 @@ func containersRestart(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w,req,baseUrl,http.StatusFound)
+	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
@@ -65,7 +65,7 @@ func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w,req,baseUrl,http.StatusFound)
+	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }
 func containers(w http.ResponseWriter, req *http.Request) {
@@ -99,7 +99,7 @@ func containers(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	tmpl, err := template.ParseFiles("appWeb/header.html","appWeb/index.html","appWeb/footer.html")
+	tmpl, err := template.ParseFiles("appWeb/header.html", "appWeb/index.html", "appWeb/footer.html")
 
 	if err != nil {
 		log.Println(err)
@@ -111,18 +111,68 @@ func containers(w http.ResponseWriter, req *http.Request) {
 	req.Body.Close()
 }
 
-func containersInspect (w http.ResponseWriter, req *http.Request) {
+func containersInspect(w http.ResponseWriter, req *http.Request) {
+	defer req.Body.Close()
 	log.Println("containersInspect")
-	//p := strings.Split(req.URL.Path, "/")
-	//p[len(p) - 1]
-	tmpl, err := template.ParseFiles("appWeb/header.html","appWeb/container-detail.html","appWeb/footer.html")
+	p := strings.Split(req.URL.Path, "/")
+	id := p[len(p) - 1]
+	log.Println("index")
+
+	ic := new(InspectContainer)
+
+	ic.Get(id)
+	ii := new(InspectImages)
+	ii.Get(ic.Image)
+	tc := new(ToptContainer)
+	tc.Get(ic.ID)
+	for t := range tc.Processes {
+		log.Println(tc)
+	}
+
+
+	type ContainerInfo struct {
+		ID       string
+		Name     string
+		RepoTags []string
+		Args     []string
+		Path     string
+		Hostname string
+		Env      []string
+	}
+	type HostInfo struct {
+		ID       string
+		Name     string
+		Image    []string
+		Args     []string
+		Path     string
+		Hostname string
+		Env      []string
+	}
+	type DATA struct {
+		ContainerInfo
+	}
+
+
+	contInfo := new(ContainerInfo)
+	contInfo.ID = ic.ID
+	contInfo.Name = ic.Name
+	contInfo.RepoTags = ii.RepoTags
+	contInfo.Args = ic.Args
+	contInfo.Path = ic.Path
+	contInfo.Hostname = ic.Config.Hostname
+	contInfo.Env = ic.Config.Env
+
+	data := new(DATA)
+	data.ContainerInfo = *contInfo
+
+	tmpl, err := template.ParseFiles("appWeb/header.html", "appWeb/container-detail.html", "appWeb/footer.html")
 
 	if err != nil {
 		log.Println(err)
 	}
 
 	tmpl.ExecuteTemplate(w, "header", nil)
-	tmpl.ExecuteTemplate(w, "index", nil)
+	tmpl.ExecuteTemplate(w, "index", data)
 	tmpl.ExecuteTemplate(w, "footer", nil)
 	req.Body.Close()
 }

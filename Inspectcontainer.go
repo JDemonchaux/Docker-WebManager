@@ -49,14 +49,14 @@ type InspectContainer struct {
 			 } `json:"LogConfig"`
 		   NetworkMode string `json:"NetworkMode"`
 		   PortBindings struct {
-				 Five0000TCP []struct {
+				 Three306TCP []struct {
 					 HostIP string `json:"HostIp"`
 					 HostPort string `json:"HostPort"`
-				 } `json:"50000/tcp"`
-				 Eight080TCP []struct {
+				 } `json:"3306/tcp"`
+				 Eight0TCP []struct {
 					 HostIP string `json:"HostIp"`
 					 HostPort string `json:"HostPort"`
-				 } `json:"8080/tcp"`
+				 } `json:"80/tcp"`
 			 } `json:"PortBindings"`
 		   RestartPolicy struct {
 				 Name string `json:"Name"`
@@ -126,23 +126,25 @@ type InspectContainer struct {
 		   AttachStdout bool `json:"AttachStdout"`
 		   AttachStderr bool `json:"AttachStderr"`
 		   ExposedPorts struct {
-				    Five0000TCP struct {
-						} `json:"50000/tcp"`
-				    Eight080TCP struct {
-						} `json:"8080/tcp"`
+				    Three306TCP struct {
+						} `json:"3306/tcp"`
+				    Eight0TCP struct {
+						} `json:"80/tcp"`
 			    } `json:"ExposedPorts"`
 		   Tty bool `json:"Tty"`
 		   OpenStdin bool `json:"OpenStdin"`
 		   StdinOnce bool `json:"StdinOnce"`
 		   Env []string `json:"Env"`
-		   Cmd interface{} `json:"Cmd"`
+		   Cmd []string `json:"Cmd"`
 		   Image string `json:"Image"`
 		   Volumes struct {
-				    VarJenkinsHome struct {
-						   } `json:"/var/jenkins_home"`
+				    EtcMysql struct {
+					     } `json:"/etc/mysql"`
+				    VarLibMysql struct {
+					     } `json:"/var/lib/mysql"`
 			    } `json:"Volumes"`
 		   WorkingDir string `json:"WorkingDir"`
-		   Entrypoint []string `json:"Entrypoint"`
+		   Entrypoint interface{} `json:"Entrypoint"`
 		   OnBuild interface{} `json:"OnBuild"`
 		   Labels struct {
 			    } `json:"Labels"`
@@ -155,14 +157,14 @@ type InspectContainer struct {
 		   LinkLocalIPv6Address string `json:"LinkLocalIPv6Address"`
 		   LinkLocalIPv6PrefixLen int `json:"LinkLocalIPv6PrefixLen"`
 		   Ports struct {
-				  Five0000TCP []struct {
+				  Three306TCP []struct {
 					  HostIP string `json:"HostIp"`
 					  HostPort string `json:"HostPort"`
-				  } `json:"50000/tcp"`
-				  Eight080TCP []struct {
+				  } `json:"3306/tcp"`
+				  Eight0TCP []struct {
 					  HostIP string `json:"HostIp"`
 					  HostPort string `json:"HostPort"`
-				  } `json:"8080/tcp"`
+				  } `json:"80/tcp"`
 			  } `json:"Ports"`
 		   SandboxKey string `json:"SandboxKey"`
 		   SecondaryIPAddresses interface{} `json:"SecondaryIPAddresses"`

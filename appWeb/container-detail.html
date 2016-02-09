@@ -53,22 +53,22 @@
                                 </div>
                                 <div class="mdl-card__supporting-text">
                                     <ul class="list-info">
-                                        <li>{{.ContainerInfo.ID}}</li>
-                                        <li>{{.ContainerInfo.Name}}</li>
-                                        <li>
+                                        <li>ID: {{.ContainerInfo.ID}}</li>
+                                        <li>Names: {{.ContainerInfo.Name}}</li>
+                                        <li>RepoTags:
                                             {{range .ContainerInfo.RepoTags}}
                                             {{.}}
                                             {{end}}
                                         </li>
-                                        <li>{{.ContainerInfo.HostName}}</li>
+                                        <li>HostName: {{.ContainerInfo.Hostname}}</li>
 
-                                        <li>
-                                            {{range .ContainerInfo.Command}}
+                                        <li>Args:
+                                            {{range .ContainerInfo.Args}}
                                             {{.}}
                                             {{end}}
                                         </li>
-                                        <li>{{.ContainerInfo.Path}}</li>
-                                        <li>{{.ContainerInfo.Env}}</li>
+                                        <li>Path: {{.ContainerInfo.Path}}</li>
+                                        <li>Env :{{.ContainerInfo.Env}}</li>
                                     </ul>
                                 </div>
                             </div>

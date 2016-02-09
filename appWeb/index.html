@@ -2,7 +2,7 @@
 {{template "header"}}
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><img class="logo" src="app/images/logo.png" alt="Docker WebManager" description="Docker WebManager"/></span>
+        <span class="mdl-layout-title"><img class="logo" src="/app/images/logo.png" alt="Docker WebManager" description="Docker WebManager"/></span>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="">Containers</a>
             <a class="mdl-navigation__link" href="">Images</a>
@@ -76,7 +76,7 @@
                             </td>
                             <td>{{.Image}}</td>
                             <td>
-                                <a href="/containers/{{.ID}}" class="btInspect mdl-color-text--indigo">
+                                <a href="/containers/inspect/{{.ID}}" class="btInspect mdl-color-text--indigo">
                                     <button class="mdl-button mdl-js-button mdl-button--icon">
                                         <i class="material-icons">search</i>
                                     </button>
