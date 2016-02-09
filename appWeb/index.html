@@ -2,8 +2,7 @@
 {{template "header"}}
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><img src="app/images/logo.png" alt="Docker WebManager"
-                                            description="Docker WebManager"/></span>
+        <span class="mdl-layout-title"><img src="app/images/logo.png" alt="Docker WebManager" description="Docker WebManager"/></span>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="">Containers</a>
             <a class="mdl-navigation__link" href="">Images</a>
@@ -39,7 +38,8 @@
                         {{range .}}
                         <tr>
                             <td class="status">
-                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}" disabled>
+                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}"
+                                        disabled>
                                     <i class="material-icons">fiber_manual_record</i>
                                 </button>
                                 <a href="/containers/start/{{.ID}}" class="btPlay {{.StatusView}}">
@@ -48,10 +48,10 @@
                                     </button>
                                 </a>
                                 <a {{if eq .StatusView "container-paused"}} href="/containers/unpause/{{.ID}}" {{else}}
-                                href="/containers/pause/{{.ID}}"{{end}}  class="btPause {{.StatusView}}">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">pause</i>
-                                    </button>
+                                href="/containers/pause/{{.ID}}"{{end}} class="btPause {{.StatusView}}">
+                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                    <i class="material-icons">pause</i>
+                                </button>
                                 </a>
                                 <a href="/containers/stop/{{.ID}}" class="btStop {{.StatusView}}">
                                     <button class="mdl-button mdl-js-button mdl-button--icon">
@@ -68,9 +68,11 @@
                             </td>
                             <td>{{.Image}}</td>
                             <td>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">search</i>
-                                </button>
+                                <a href="/containers/{{.ID}}" class="btInspect mdl-color-text--indigo">
+                                    <button class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="material-icons">search</i>
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                         {{end}}
