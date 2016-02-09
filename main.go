@@ -19,6 +19,7 @@ func server(){
 	http.HandleFunc("/",containers)
 
 	http.HandleFunc("/containers/", containersInspect)
+	http.HandleFunc("/containers/restart/", containersRestart)
 	http.HandleFunc("/containers/start/", containersStart)
 	http.HandleFunc("/containers/stop/", containersStop)
 	http.HandleFunc("/containers/pause/", containersPause)

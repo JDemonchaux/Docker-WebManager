@@ -44,6 +44,18 @@ func containersPause(w http.ResponseWriter, req *http.Request) {
 	http.Redirect(w,req,baseUrl,http.StatusFound)
 	return
 }
+func containersRestart(w http.ResponseWriter, req *http.Request) {
+	p := strings.Split(req.URL.Path, "/")
+
+	_, err := http.Post(url + "containers/" + p[len(p) - 1] + "/restart", "", nil)
+	if err != nil {
+		log.Println(err)
+	}
+
+	log.Println(http.StatusFound)
+	http.Redirect(w,req,baseUrl,http.StatusFound)
+	return
+}
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
@@ -56,7 +68,6 @@ func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	http.Redirect(w,req,baseUrl,http.StatusFound)
 	return
 }
-
 func containers(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	log.Println("index")
@@ -101,6 +112,9 @@ func containers(w http.ResponseWriter, req *http.Request) {
 }
 
 func containersInspect (w http.ResponseWriter, req *http.Request) {
+	log.Println("containersInspect")
+	//p := strings.Split(req.URL.Path, "/")
+	//p[len(p) - 1]
 	tmpl, err := template.ParseFiles("appWeb/header.html","appWeb/container-detail.html","appWeb/footer.html")
 
 	if err != nil {
