@@ -174,7 +174,6 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		ContainerInfo
 	}
 
-
 	contInfo := new(ContainerInfo)
 	contInfo.ID = ic.ID
 	contInfo.Name = ic.Name
