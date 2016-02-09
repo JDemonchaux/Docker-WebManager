@@ -25,6 +25,7 @@ func server(){
 	http.HandleFunc("/containers/stop/", containersStop)
 	http.HandleFunc("/containers/pause/", containersPause)
 	http.HandleFunc("/containers/unpause/", containersUnpause)
+	http.HandleFunc("/containers/delete/", containersDelete)
 	log.Println("Serving at localhost:1234...")
 	log.Fatal(http.ListenAndServe(":1234", nil))
 }

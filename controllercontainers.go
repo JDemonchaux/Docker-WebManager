@@ -6,6 +6,7 @@ import (
 	"log"
 	"regexp"
 	"strings"
+	"bytes"
 )
 
 func containersStart(w http.ResponseWriter, req *http.Request) {
@@ -68,6 +69,25 @@ func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }
+
+func containersDelete(w http.ResponseWriter, req *http.Request) {
+	p := strings.Split(req.URL.Path, "/")
+
+	client := &http.Client{}
+	reqDelete, err := http.NewRequest(
+		"DELETE",
+		url + "containers/" + p[len(p) - 1] + "?v=1",
+		bytes.NewBuffer([]byte("[]")))
+	if err != nil {
+		log.Println(err)
+	}
+	client.Do(reqDelete)
+
+	log.Println(http.StatusFound)
+	http.Redirect(w, req, baseUrl, http.StatusFound)
+	return
+}
+
 func containers(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	log.Println("index")
@@ -125,8 +145,10 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	ii.Get(ic.Image)
 	tc := new(ToptContainer)
 	tc.Get(ic.ID)
-	for t := range tc.Processes {
-		log.Println(tc)
+	for _,t := range *tc.Processes {
+		for i,u := range t{
+			log.Println(tc.Titles[i] +": " +u)
+		}
 	}
 
 

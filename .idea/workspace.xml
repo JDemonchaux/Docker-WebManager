@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14ef8931-42d2-4bb7-ae3b-982a1c223cd6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topcontainers.go" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Backend_Docker_Management.exe" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Docker-WebManager.exe" afterPath="$PROJECT_DIR$/Docker-WebManager.exe" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Inspectcontainer.go" afterPath="$PROJECT_DIR$/Inspectcontainer.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appWeb/container-detail.html" afterPath="$PROJECT_DIR$/appWeb/container-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appWeb/index.html" afterPath="$PROJECT_DIR$/appWeb/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllercontainers.go" afterPath="$PROJECT_DIR$/controllercontainers.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
     </list>
@@ -40,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
               <folding>
                 <element signature="e#14#43#0" expanded="true" />
               </folding>
@@ -75,10 +69,10 @@
       <file leaf-file-name="controllercontainers.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllercontainers.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42592594">
-              <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.35185185">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
-                <element signature="e#14#81#0" expanded="true" />
+                <element signature="e#14#90#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,9 +175,9 @@
         <option value="$PROJECT_DIR$/appWeb/footer.html" />
         <option value="$PROJECT_DIR$/Inspectcontainer.go" />
         <option value="$PROJECT_DIR$/appWeb/container-detail.html" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/appWeb/index.html" />
         <option value="$PROJECT_DIR$/topcontainers.go" />
+        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/controllercontainers.go" />
       </list>
     </option>
@@ -758,7 +752,7 @@
       <workItem from="1455020873749" duration="887000" />
       <workItem from="1455021797826" duration="925000" />
       <workItem from="1455030041485" duration="2883000" />
-      <workItem from="1455035552026" duration="4418000" />
+      <workItem from="1455035552026" duration="6189000" />
     </task>
     <task id="LOCAL-00001" summary="je push tout ça">
       <created>1455022272846</created>
@@ -776,7 +770,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36476000" />
+    <option name="totallyTimeSpent" value="38247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -910,7 +904,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14#81#0" expanded="true" />
+            <element signature="e#14#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1000,7 +994,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14#81#0" expanded="true" />
+            <element signature="e#14#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1089,7 +1083,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14#81#0" expanded="true" />
+            <element signature="e#14#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1250,16 +1244,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="e#14#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Inspectcontainer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1278,12 +1262,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding>
+            <element signature="e#14#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllercontainers.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42592594">
-          <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.35185185">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
-            <element signature="e#14#81#0" expanded="true" />
+            <element signature="e#14#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
