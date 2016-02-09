@@ -2,13 +2,13 @@
 {{template "header"}}
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><img src="/app/images/logo.png" alt="Docker WebManager"
-                                            description="Docker WebManager"/></span>
+        <span class="mdl-layout-title">
+            <img src="/app/images/logo.png" alt="Docker WebManager" class="logo"/>
+        </span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/">Containers</a>
-            <a class="mdl-navigation__link" href="">Images</a>
-            <a class="mdl-navigation__link" href="">????</a>
-            <a class="mdl-navigation__link" href="">Profit!</a>
+            <a class="mdl-navigation__link" href="/">Containers 1</a>
+            <a class="mdl-navigation__link" href="/">Containers 2</a>
+            <a class="mdl-navigation__link" href="/">Containers 3</a>
         </nav>
     </div>
     <main class="mdl-layout__content">
@@ -35,56 +35,109 @@
                     </button>
                 </div>
             </div>
-            <div class="mdl-grid">
-                <div class="mdl-cell--12-col">
+            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                <div class="mdl-tabs__tab-bar">
+                    <a href="#container-info-panel" class="mdl-tabs__tab is-active">Container</a>
+                    <a href="#top-panel" class="mdl-tabs__tab">Top</a>
+                    <a href="#stats-panel" class="mdl-tabs__tab">Stats</a>
+                    <a href="#logs-panel" class="mdl-tabs__tab">Logs</a>
+                    <a href="#console-panel" class="mdl-tabs__tab">Console</a>
+                </div>
+
+                <div class="mdl-tabs__panel is-active" id="container-info-panel">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Container info</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    <ul class="list-info">
+                                        <li>{{.ContainerInfo.ID}}</li>
+                                        <li>{{.ContainerInfo.Name}}</li>
+                                        <li>{{.ContainerInfo.Image}}</li>
+                                        <li>{{.ContainerInfo.HostName}}</li>
+
+                                        <li>
+                                            {{range .ContainerInfo.Command}}
+                                            {{.}}
+                                            {{end}}
+                                        </li>
+                                        <li>{{.ContainerInfo.Path}}</li>
+                                        <li>{{.ContainerInfo.Env}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Host Info</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    <ul class="list-info">
+                                        <li>{{.HostInfo.Name}}</li>
+                                        <li>{{.HostInfo.Host}}</li>
+                                        <li>{{.HostInfo.CPUs}}</li>
+                                        <li>{{.HostInfo.Memory}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Network info</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    <ul class="list-info">
+                                        <li>{{.NetworkInfo.IP}}</li>
+                                        <li>{{.NetworkInfo.Gateway}}</li>
+                                        <li>{{.NetworkInfo.Mac}}</li>
+                                        <li>
+                                            {{range .NetworkInfo.Ports}}
+                                            {{.}}
+                                            {{end}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-tabs__panel" id="top-panel">
                     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                         <thead>
                         <tr>
-                            <th class="small">Status</th>
-                            <th>Node</th>
-                            <th>Name</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th class="mdl-data-table__cell--non-numeric">Material</th>
+                            <th>Quantity</th>
+                            <th>Unit price</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {{range .}}
                         <tr>
-                            <td class="status">
-                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}"
-                                        disabled>
-                                    <i class="material-icons">fiber_manual_record</i>
-                                </button>
-
-                                <a {{if eq .StatusView "container-paused"}} href="/containers/unpause/{{.ID}}" {{else}}
-                                href="/containers/pause/{{.ID}}"{{end}} class="btPause {{.StatusView}}">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">pause</i>
-                                    </button>
-                                </a>
-                                <a href="/containers/stop/{{.ID}}" class="btStop {{.StatusView}}">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">stop</i>
-                                    </button>
-                                </a>
-                                <span>{{.Status}}</span>
-                            </td>
-                            <td>Node here</td>
-                            <td>
-                                {{range .Names}}
-                                {{.}}
-                                {{end}}
-                            </td>
-                            <td>{{.Image}}</td>
-                            <td>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">search</i>
-                                </button>
-                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+                            <td>25</td>
+                            <td>$2.90</td>
                         </tr>
-                        {{end}}
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+                            <td>50</td>
+                            <td>$1.25</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
+                            <td>10</td>
+                            <td>$2.35</td>
+                        </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="mdl-tabs__panel" id="targaryens-panel">
+                    <ul>
+                        <li>Viserys</li>
+                        <li>Daenerys</li>
+                    </ul>
                 </div>
             </div>
         </div>

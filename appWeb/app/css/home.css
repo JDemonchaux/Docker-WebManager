@@ -1,8 +1,9 @@
 .mdl-data-table {
-    width:100%;
+    width: 100%;
 }
+
 .mdl-layout__drawer {
-    padding-top:1px;
+    padding-top: 1px;
     overflow: visible;
 }
 
@@ -12,7 +13,7 @@
 
 .title {
     /*text-align: center;*/
-    text-indent:1rem;
+    text-indent: 1rem;
 }
 
 table, tr, td, th {
@@ -20,32 +21,46 @@ table, tr, td, th {
 }
 
 .small {
-    width:1rem;
+    width: 1rem;
 }
 
-.statusIcon.container-running>i {
-    color:green !important;
+.statusIcon.container-running > i {
+    color: green !important;
 }
-.statusIcon.container-paused>i {
-    color:orange !important;
+
+.statusIcon.container-paused > i {
+    color: orange !important;
 }
-.statusIcon.container-stopped>i {
-    color:red !important;
+
+.statusIcon.container-stopped > i {
+    color: red !important;
 }
 
 td.status > a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 a.btPlay {
-    color:green;
+    color: green;
 }
 
 .disabled > button {
-    color: rgba(0,0,0,.26);
+    color: rgba(0, 0, 0, .26);
     cursor: auto;
 }
 
-.btInspect {
+.btAdd {
+    float: right;
+}
+
+
+/* cache les checkbx du tableau */
+/*th > .mdl-checkbox, td > .mdl-checkbox {*/
+    /*display:none !important;*/
+/*}*/
+@media screen and (max-width: 1024px) {
+    img.logo {
+        display: none;
+    }
 }
