@@ -55,7 +55,11 @@
                                     <ul class="list-info">
                                         <li>{{.ContainerInfo.ID}}</li>
                                         <li>{{.ContainerInfo.Name}}</li>
-                                        <li>{{.ContainerInfo.Image}}</li>
+                                        <li>
+                                            {{range .ContainerInfo.RepoTags}}
+                                            {{.}}
+                                            {{end}}
+                                        </li>
                                         <li>{{.ContainerInfo.HostName}}</li>
 
                                         <li>
