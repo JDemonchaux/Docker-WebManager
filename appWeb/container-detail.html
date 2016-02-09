@@ -15,7 +15,8 @@
         <div class="page-content">
             <div class="mdl-grid">
                 <div class="mdl-cell--middle mdl-cell--12-col title">
-                    <h1>Containers 1</h1>
+                    <h1 class="title">{{.Name}}</h1>
+                    <div class="subtitle-wrapper">Id : <span class="subtitle shorten-id">{{.ID}}</span></div>
                 </div>
                 <div class="mdl-cell--12-col">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
@@ -46,64 +47,71 @@
 
                 <div class="mdl-tabs__panel is-active" id="container-info-panel">
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                                <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Container info</h2>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <h3 class="title-infos">Container Infos</h3>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell--6-col">
+                                    <div class="">Id : <span class="shorten-id">{{.ID}}</span></div>
+                                    <div class="">Name : {{.Name}}</div>
+                                    <div class="">Image :
+                                        {{range .RepoTags}}
+                                        {{.}}
+                                        {{end}}
+                                    </div>
                                 </div>
-                                <div class="mdl-card__supporting-text">
-                                    <ul class="list-info">
-                                        <li>ID: {{.ContainerInfo.ID}}</li>
-                                        <li>Names: {{.ContainerInfo.Name}}</li>
-                                        <li>RepoTags:
-                                            {{range .ContainerInfo.RepoTags}}
-                                            {{.}}
-                                            {{end}}
-                                        </li>
-                                        <li>HostName: {{.ContainerInfo.Hostname}}</li>
-
-                                        <li>Args:
-                                            {{range .ContainerInfo.Args}}
-                                            {{.}}
-                                            {{end}}
-                                        </li>
-                                        <li>Path: {{.ContainerInfo.Path}}</li>
-                                        <li>Env :{{.ContainerInfo.Env}}</li>
-                                    </ul>
+                                <div class="mdl-cell--6-col">
+                                    <div class=""> Command :
+                                        {{range .Command}}
+                                        {{.}}
+                                        {{end}}
+                                    </div>
+                                    <div class="">Size : {{.Size}}</div>
+                                </div>
+                            </div>
+                            <div class="mdl-grid">
+                                <h3 class="title-infos">Environment</h3>
+                                <div class="mdl-cell--6-col">
+                                    <div class="">Path : {{.Path}}</div>
+                                    <div class="">Env :
+                                        {{range .Env}}
+                                        {{.}}
+                                        {{end}}
+                                    </div>
+                                </div>
+                                <div class="mdl-cell--6-col">
+                                    <div class=""> Hostname : {{.Hostname}}</div>
+                                    <div class="">DomainName : {{.DomainName}}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                                <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Host Info</h2>
-                                </div>
-                                <div class="mdl-card__supporting-text">
-                                    <ul class="list-info">
-                                        <li>{{.HostInfo.Name}}</li>
-                                        <li>{{.HostInfo.Host}}</li>
-                                        <li>{{.HostInfo.CPUs}}</li>
-                                        <li>{{.HostInfo.Memory}}</li>
-                                    </ul>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <h3 class="title-infos">Network Infos</h3>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell--12-col">
+                                    <div class="">IP : <span class="shorten-id">{{.IO}}</span></div>
+                                    <div class="">Gateway : {{.Gateway}}</div>
+                                    <div class="">MAC : {{.Mac}}</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                                <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Network info</h2>
-                                </div>
-                                <div class="mdl-card__supporting-text">
-                                    <ul class="list-info">
-                                        <li>{{.NetworkInfo.IP}}</li>
-                                        <li>{{.NetworkInfo.Gateway}}</li>
-                                        <li>{{.NetworkInfo.Mac}}</li>
-                                        <li>
-                                            {{range .NetworkInfo.Ports}}
-                                            {{.}}
-                                            {{end}}
-                                        </li>
-                                    </ul>
+                            <h3 class="title-infos">Exposed Ports</h3>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell--12-col">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Private</th>
+                                            <th>Public</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{range .Ports}}
+                                        <tr>
+                                            <td>{{.Private}}</td>
+                                            <td>{{.Public}}</td>
+                                        </tr>
+                                        {{end}}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

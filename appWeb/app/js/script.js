@@ -5,5 +5,11 @@ $(document).ready(function () {
         });
         $(this).addClass("disabled");
         $(this).find(">:first-child").prop("disabled", "disabled");
+    });
+
+
+    $(".shorten-id").each(function() {
+        var id = $(this).text();
+        $(this).text(id.substr(0, 12));
     })
 });
