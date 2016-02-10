@@ -139,18 +139,15 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	id := p[len(p) - 1]
 	log.Println("index")
 
-	ic := new(InspectContainer)
 
+	//generate data
+	ic := new(InspectContainer)
 	ic.Get(id)
 	ii := new(InspectImages)
 	ii.Get(ic.Image)
 	tc := new(ToptContainer)
 	tc.Get(ic.ID)
-	//for _, t := range *tc.Processes {
-	//	for i, u := range t {
-	//		log.Println(tc.Titles[i] + ": " + u)
-	//	}
-	//}
+
 	contJson := new(ListContainers)
 	contJson.GetByID(id)
 
@@ -177,7 +174,9 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	}
 	type DATA struct {
 		ContainerInfo
+		RawData string
 		NetworkInfo
+		ToptContainer
 	}
 
 	contInfo := new(ContainerInfo)
@@ -195,7 +194,6 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	netInfo.IPAddress = ic.NetworkSettings.IPAddress
 	netInfo.Gateway = ic.NetworkSettings.Gateway
 	netInfo.MacAddress = ic.NetworkSettings.MacAddress
-	log.Println(contJson)
 	for _, c := range *contJson{
 		for _,port := range c.Ports {
 			netInfo.ExposedPorts = append(netInfo.ExposedPorts,
@@ -203,10 +201,13 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 					strconv.FormatInt(int64(port.PublicPort),10)+"/"+port.Type})
 		}
 	}
-	log.Println(netInfo.ExposedPorts)
+
 	data := new(DATA)
 	data.ContainerInfo = *contInfo
 	data.NetworkInfo = *netInfo
+	data.ToptContainer = *tc
+	data.RawData = ic.RawData
+	//end generate
 
 	tmpl, err := template.ParseFiles("appWeb/header.html", "appWeb/container-detail.html", "appWeb/footer.html")
 

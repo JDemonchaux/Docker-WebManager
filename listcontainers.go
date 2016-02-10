@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"io/ioutil"
 	"bytes"
-	"log"
 )
 
 type ListContainers []struct {
@@ -79,7 +78,6 @@ func (x *ListContainers)GetByID(id string) (err error){
 		return err
 	}
 	defer resp.Body.Close()
-	log.Println(url + "containers/json?filters={\"id\":[\""+ id + "\"]}")
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
