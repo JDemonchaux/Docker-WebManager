@@ -132,6 +132,7 @@ func containers(w http.ResponseWriter, req *http.Request) {
 	req.Body.Close()
 }
 
+
 func containersInspect(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	log.Println("containersInspect")
