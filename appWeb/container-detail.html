@@ -50,7 +50,9 @@
                         <div class="mdl-cell mdl-cell--6-col">
                             <div class="mdl-grid content-grid">
                                 <div class="mdl-cell--12-col">
-                                    <h3 class="title-infos">Container Infos<button class="raw">raw</button></h3>
+                                    <h3 class="title-infos">Container Infos
+                                        <button id="raw">raw</button>
+                                    </h3>
                                 </div>
                                 <div class="mdl-cell--6-col">
                                     <div class=""><span class="key">Id : </span><span class="shorten-id">{{.ID}}</span>
@@ -74,7 +76,7 @@
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--12-col">
-                                    <h3 class="title-infos">Environment<button class="raw">raw</button></h3>
+                                    <h3 class="title-infos">Environment</h3>
                                 </div>
                                 <div class="mdl-cell--6-col">
                                     <div class=""><span class="key">Hostname : </span>{{.Hostname}}</div>
@@ -91,7 +93,7 @@
                         <div class="mdl-cell mdl-cell--6-col">
                             <div class="mdl-grid content-grid">
                                 <div class="mdl-cell--12-col">
-                                    <h3 class="title-infos">Network Infos<button class="raw">raw</button></h3>
+                                    <h3 class="title-infos">Network Infos</h3>
                                 </div>
                                 <div class="mdl-cell--12-col">
                                     <div class=""><span class="key">IP : </span><span
@@ -102,7 +104,7 @@
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--12-col">
-                                    <h3 class="title-infos">Exposed Ports<button class="raw">raw</button></h3>
+                                    <h3 class="title-infos">Exposed Ports </h3>
                                 </div>
                                 <div class="mdl-cell--12-col">
                                     <table>
@@ -116,7 +118,8 @@
                                         {{range .ExposedPorts}}
                                         <tr>
                                             <td>{{.Private}}</td>
-                                            <td><i class="material-icons">forward</i>{{.Public}}</td>
+                                            <td><i class="material-icons">forward</i></td>
+                                            <td>{{.Public}}</td>
                                         </tr>
                                         {{end}}
                                         </tbody>
@@ -162,6 +165,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- Dialog raw data -->
+        <dialog class="mdl-dialog raw-data">
+            <h4 class="mdl-dialog__title">Raw Data</h4>
+            <div class="mdl-dialog__content">
+                <div id="JSON">
+                    {{.RawData}}
+                </div>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button type="button" class="mdl-button close">Close</button>
+            </div>
+        </dialog>
+
     </main>
 </div>
 
