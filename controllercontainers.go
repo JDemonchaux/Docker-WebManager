@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"strings"
 	"bytes"
+	"strconv"
 )
 
 func containersStart(w http.ResponseWriter, req *http.Request) {
@@ -164,14 +165,15 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		Env        []string
 		ShmSize    int
 	}
+	type ExposedPorts struct {
+		Private string
+		Public  string
+	}
 	type NetworkInfo struct {
 		IPAddress    string
 		Gateway      string
 		MacAddress   string
-		ExposedPorts []struct {
-			Private string
-			Public  string
-		}
+		ExposedPorts []ExposedPorts
 	}
 	type DATA struct {
 		ContainerInfo
@@ -193,15 +195,15 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	netInfo.IPAddress = ic.NetworkSettings.IPAddress
 	netInfo.Gateway = ic.NetworkSettings.Gateway
 	netInfo.MacAddress = ic.NetworkSettings.MacAddress
+	log.Println(contJson)
 	for _, c := range *contJson{
-		for i,port := range c.Ports {
-			netInfo.ExposedPorts[i].Private = string(port.PrivatePort)
-			netInfo.ExposedPorts[i].Public = string(port.PublicPort)
+		for _,port := range c.Ports {
+			netInfo.ExposedPorts = append(netInfo.ExposedPorts,
+				ExposedPorts{strconv.FormatInt(int64(port.PrivatePort),10),
+					strconv.FormatInt(int64(port.PublicPort),10)+"/"+port.Type})
 		}
 	}
-
-
-
+	log.Println(netInfo.ExposedPorts)
 	data := new(DATA)
 	data.ContainerInfo = *contInfo
 	data.NetworkInfo = *netInfo

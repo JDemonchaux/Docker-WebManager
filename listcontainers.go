@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"io/ioutil"
 	"bytes"
+	"log"
 )
 
 type ListContainers []struct {
@@ -73,11 +74,12 @@ func (x *ListContainers)Get() (err error){
 }
 
 func (x *ListContainers)GetByID(id string) (err error){
-	resp, err := http.Get(url + "containers/json?filters={'id':['"+ id + "']}")
+	resp, err := http.Get(url + "containers/json?filters={\"id\":[\""+ id + "\"]}")
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
+	log.Println(url + "containers/json?filters={\"id\":[\""+ id + "\"]}")
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
