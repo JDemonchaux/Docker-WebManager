@@ -43,7 +43,6 @@ func containersPause(w http.ResponseWriter, req *http.Request) {
 	}
 
 	log.Println(http.StatusFound)
-	log.Println(baseUrl)
 	http.Redirect(w, req, baseUrl, http.StatusFound)
 	return
 }

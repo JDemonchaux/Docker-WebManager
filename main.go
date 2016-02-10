@@ -10,7 +10,7 @@ const url  = "http://10.254.253.252:2375/"
 //const url  = "http://192.168.0.254:2375/"
 
 var host,_ = os.Hostname()
-var baseUrl  = "https:/127.0.0.1/"
+var baseUrl  = "https://" + host + "/"
 
 func main() {
 
