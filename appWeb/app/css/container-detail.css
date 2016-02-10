@@ -12,8 +12,24 @@
 }
 
 .title-infos {
-    font-size:20px;
-    margin-top:-1rem;
-    margin-bottom:0;
-    font-style: italic;
+    display:block;
+    margin-top:0;
+    color:#767676;
+    font-weight:300;
+}
+
+span.key {
+    font-weight:bold;
+}
+
+button.raw {
+    margin-left: 1rem;
+    width: 2rem;
+    height: 1rem;
+    font-size: 8px;
+    cursor:pointer;
+}
+
+.content-grid {
+    margin-bottom: 2rem;
 }

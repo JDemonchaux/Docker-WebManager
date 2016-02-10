@@ -48,53 +48,62 @@
                 <div class="mdl-tabs__panel is-active" id="container-info-panel">
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--6-col">
-                            <h3 class="title-infos">Container Infos</h3>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell--6-col">
-                                    <div class="">Id : <span class="shorten-id">{{.ID}}</span></div>
-                                    <div class="">Name : {{.Name}}</div>
-                                    <div class="">Image :
-                                        {{range .RepoTags}}
-                                        {{.}}
-                                        {{end}}
-                                    </div>
+                            <div class="mdl-grid content-grid">
+                                <div class="mdl-cell--12-col">
+                                    <h3 class="title-infos">Container Infos<button class="raw">raw</button></h3>
                                 </div>
                                 <div class="mdl-cell--6-col">
-                                    <div class=""> Command :
+                                    <div class=""><span class="key">Id : </span><span class="shorten-id">{{.ID}}</span>
+                                    </div>
+                                    <div class=""><span class="key">Name : </span>{{.Name}}</div>
+                                    <div class=""><span class="key">Command :</span>
                                         {{range .Args}}
                                         {{.}}
                                         {{end}}
                                     </div>
-                                    <div class="">Size : {{.ShmSize}}</div>
+                                </div>
+                                <div class="mdl-cell--6-col">
+                                    <div class=""><span class="key">Size : </span>{{.ShmSize}}</div>
+                                    <div class=""><span class="key">Image :</span>
+                                        {{range .RepoTags}}
+                                        {{.}}
+                                        {{end}}
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="mdl-grid">
-                                <h3 class="title-infos">Environment</h3>
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <h3 class="title-infos">Environment<button class="raw">raw</button></h3>
+                                </div>
                                 <div class="mdl-cell--6-col">
-                                    <div class="">Path : {{.Path}}</div>
-                                    <div class="">Env :
+                                    <div class=""><span class="key">Hostname : </span>{{.Hostname}}</div>
+                                    <div class=""><span class="key">DomainName : </span>{{.Domainname}}</div>
+                                    <div class=""><span class="key">Path : </span>{{.Path}}</div>
+                                    <div class=""><span class="key">Env :</span>
                                         {{range .Env}}
                                         {{.}}
                                         {{end}}
                                     </div>
                                 </div>
-                                <div class="mdl-cell--6-col">
-                                    <div class=""> Hostname : {{.Hostname}}</div>
-                                    <div class="">DomainName : {{.Domainname}}</div>
-                                </div>
                             </div>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
-                            <h3 class="title-infos">Network Infos</h3>
-                            <div class="mdl-grid">
+                            <div class="mdl-grid content-grid">
                                 <div class="mdl-cell--12-col">
-                                    <div class="">IP : <span class="shorten-id">{{.IPAddress}}</span></div>
-                                    <div class="">Gateway : {{.Gateway}}</div>
-                                    <div class="">MAC : {{.MacAddress}}</div>
+                                    <h3 class="title-infos">Network Infos<button class="raw">raw</button></h3>
+                                </div>
+                                <div class="mdl-cell--12-col">
+                                    <div class=""><span class="key">IP : </span><span
+                                            class="shorten-id">{{.IPAddress}}</span></div>
+                                    <div class=""><span class="key">Gateway : </span>{{.Gateway}}</div>
+                                    <div class=""><span class="key">MAC : </span>{{.MacAddress}}</div>
                                 </div>
                             </div>
-                            <h3 class="title-infos">Exposed Ports</h3>
                             <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <h3 class="title-infos">Exposed Ports<button class="raw">raw</button></h3>
+                                </div>
                                 <div class="mdl-cell--12-col">
                                     <table>
                                         <thead>
