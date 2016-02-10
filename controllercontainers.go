@@ -145,46 +145,66 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	ii.Get(ic.Image)
 	tc := new(ToptContainer)
 	tc.Get(ic.ID)
-	for _,t := range *tc.Processes {
-		for i,u := range t{
-			log.Println(tc.Titles[i] +": " +u)
-		}
-	}
-
+	//for _, t := range *tc.Processes {
+	//	for i, u := range t {
+	//		log.Println(tc.Titles[i] + ": " + u)
+	//	}
+	//}
+	contJson := new(ListContainers)
+	contJson.GetByID(id)
 
 	type ContainerInfo struct {
-		ID       string
-		Name     string
-		RepoTags []string
-		Args     []string
-		Path     string
-		Hostname string
-		Env      []string
+		ID         string
+		Name       string
+		RepoTags   []string
+		Args       []string
+		Path       string
+		Hostname   string
+		Domainname string
+		Env        []string
+		ShmSize    int
 	}
-	type HostInfo struct {
-		ID       string
-		Name     string
-		Image    []string
-		Args     []string
-		Path     string
-		Hostname string
-		Env      []string
+	type NetworkInfo struct {
+		IPAddress    string
+		Gateway      string
+		MacAddress   string
+		ExposedPorts []struct {
+			Private string
+			Public  string
+		}
 	}
 	type DATA struct {
 		ContainerInfo
+		NetworkInfo
 	}
 
 	contInfo := new(ContainerInfo)
 	contInfo.ID = ic.ID
+	contInfo.Domainname = ic.Config.Domainname
 	contInfo.Name = ic.Name
 	contInfo.RepoTags = ii.RepoTags
 	contInfo.Args = ic.Args
 	contInfo.Path = ic.Path
 	contInfo.Hostname = ic.Config.Hostname
 	contInfo.Env = ic.Config.Env
+	contInfo.ShmSize = ic.HostConfig.ShmSize
+
+	netInfo := new(NetworkInfo)
+	netInfo.IPAddress = ic.NetworkSettings.IPAddress
+	netInfo.Gateway = ic.NetworkSettings.Gateway
+	netInfo.MacAddress = ic.NetworkSettings.MacAddress
+	for _, c := range *contJson{
+		for i,port := range c.Ports {
+			netInfo.ExposedPorts[i].Private = string(port.PrivatePort)
+			netInfo.ExposedPorts[i].Public = string(port.PublicPort)
+		}
+	}
+
+
 
 	data := new(DATA)
 	data.ContainerInfo = *contInfo
+	data.NetworkInfo = *netInfo
 
 	tmpl, err := template.ParseFiles("appWeb/header.html", "appWeb/container-detail.html", "appWeb/footer.html")
 

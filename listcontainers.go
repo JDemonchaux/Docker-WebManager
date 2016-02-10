@@ -71,3 +71,22 @@ func (x *ListContainers)Get() (err error){
 
 	return
 }
+
+func (x *ListContainers)GetByID(id string) (err error){
+	resp, err := http.Get(url + "containers/json?filters={'id':['"+ id + "']}")
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	x.Decode(bytes.NewReader(body))
+
+	resp.Body.Close()
+
+	return
+}

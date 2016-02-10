@@ -61,11 +61,11 @@
                                 </div>
                                 <div class="mdl-cell--6-col">
                                     <div class=""> Command :
-                                        {{range .Command}}
+                                        {{range .Args}}
                                         {{.}}
                                         {{end}}
                                     </div>
-                                    <div class="">Size : {{.Size}}</div>
+                                    <div class="">Size : {{.ShmSize}}</div>
                                 </div>
                             </div>
                             <div class="mdl-grid">
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="mdl-cell--6-col">
                                     <div class=""> Hostname : {{.Hostname}}</div>
-                                    <div class="">DomainName : {{.DomainName}}</div>
+                                    <div class="">DomainName : {{.Domainname}}</div>
                                 </div>
                             </div>
                         </div>
@@ -88,9 +88,9 @@
                             <h3 class="title-infos">Network Infos</h3>
                             <div class="mdl-grid">
                                 <div class="mdl-cell--12-col">
-                                    <div class="">IP : <span class="shorten-id">{{.IO}}</span></div>
+                                    <div class="">IP : <span class="shorten-id">{{.IPAddress}}</span></div>
                                     <div class="">Gateway : {{.Gateway}}</div>
-                                    <div class="">MAC : {{.Mac}}</div>
+                                    <div class="">MAC : {{.MacAddress}}</div>
                                 </div>
                             </div>
                             <h3 class="title-infos">Exposed Ports</h3>
@@ -104,7 +104,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {{range .Ports}}
+                                        {{range .ExposedPorts}}
                                         <tr>
                                             <td>{{.Private}}</td>
                                             <td>{{.Public}}</td>
