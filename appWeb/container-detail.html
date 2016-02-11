@@ -7,18 +7,14 @@
         <i class="material-icons">menu</i>
     </a>
     <ul class="side-nav fixed hide-on-med-and-down">
-        <li><a href="/containers">Container 1 </a></li>
-        <li><a href="">Container 2</a></li>
-        <li><a href="">Container 3</a></li>
-        <li><a href="">Container 4</a></li>
-        <li><a href="">Container 5</a></li>
+        {{range .MenuContainers}}
+        <li><a href="/containers/{{.ID}}">{{.Name}}</a></li>
+        {{end}}
     </ul>
     <ul class="side-nav" id="mobile-demo">
-        <li><a href="/containers">Container 1 </a></li>
-        <li><a href="">Container 2</a></li>
-        <li><a href="">Container 3</a></li>
-        <li><a href="">Container 4</a></li>
-        <li><a href="">Container 5</a></li>
+        {{range .MenuContainers}}
+        <li><a href="/containers/{{.ID}}">{{.Name}}</a></li>
+        {{end}}
     </ul>
 </aside>
 <main>
