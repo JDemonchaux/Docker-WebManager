@@ -149,6 +149,7 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	tc := new(ToptContainer)
 	tc.Get(ic.ID)
 	lc := new(ListContainers)
+	lc.Get()
 
 	contJson := new(ListContainers)
 	contJson.GetByID(id)
