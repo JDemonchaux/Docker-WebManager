@@ -206,7 +206,7 @@ func (x *InspectContainer)Decode(r io.Reader) (err error) {
 }
 
 func (x *InspectContainer)Get(ID string) (err error){
-	resp, err := http.Get(url + "containers/"+ID+"/json")
+	resp, err := http.Get(apiUrl + "containers/"+ID+"/json")
 	if err != nil {
 		return err
 	}

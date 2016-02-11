@@ -6,13 +6,21 @@ import (
 	"os"
 )
 
-//const url  = "http://10.254.253.252:2375/"
-const url  = "http://192.168.0.254:2375/"
+//var url  = "http://10.254.253.252:2375/"
+var apiUrl  = "http://192.168.0.254:2375/"
 
+var sock = "/var/run/docker.sock"
 var host,_ = os.Hostname()
 var baseUrl  = "https://" + host + "/"
 
+
 func main() {
+	if _, err := os.Stat(sock); err != nil {
+		log.Println(err)
+	}else {
+		go unixSock(sock)
+		apiUrl  = "http://127.0.0.1:1234/"
+	}
 
 	server()
 }

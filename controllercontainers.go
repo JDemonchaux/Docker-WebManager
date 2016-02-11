@@ -13,7 +13,7 @@ import (
 func containersStart(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(url + "containers/" + p[len(p) - 1] + "/start", "", nil)
+	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/start", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -25,7 +25,7 @@ func containersStart(w http.ResponseWriter, req *http.Request) {
 func containersStop(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(url + "containers/" + p[len(p) - 1] + "/stop", "", nil)
+	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/stop", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -37,7 +37,7 @@ func containersStop(w http.ResponseWriter, req *http.Request) {
 func containersPause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(url + "containers/" + p[len(p) - 1] + "/pause", "", nil)
+	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/pause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -49,7 +49,7 @@ func containersPause(w http.ResponseWriter, req *http.Request) {
 func containersRestart(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(url + "containers/" + p[len(p) - 1] + "/restart", "", nil)
+	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/restart", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -61,7 +61,7 @@ func containersRestart(w http.ResponseWriter, req *http.Request) {
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(url + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
+	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -77,7 +77,7 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 	client := &http.Client{}
 	reqDelete, err := http.NewRequest(
 		"DELETE",
-		url + "containers/" + p[len(p) - 1] + "?v=1",
+		apiUrl + "containers/" + p[len(p) - 1] + "?v=1",
 		bytes.NewBuffer([]byte("[]")))
 	if err != nil {
 		log.Println(err)
