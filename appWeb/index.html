@@ -1,95 +1,99 @@
 {{define "index"}}
 {{template "header"}}
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><img class="logo" src="/app/images/logo.png" alt="Docker WebManager" description="Docker WebManager"/></span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Containers</a>
-            <a class="mdl-navigation__link" href="">Images</a>
-            <a class="mdl-navigation__link" href="">????</a>
-            <a class="mdl-navigation__link" href="">Profit!</a>
-        </nav>
+
+<aside>
+    <a href="#!" class="brand-logo"></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse btn-floating btn-large">
+        <i class="material-icons">menu</i>
+    </a>
+    <ul class="side-nav fixed hide-on-med-and-down">
+        <li><a href="/containers">Containers</a></li>
+        <li><a href="">Images</a></li>
+        <li><a href="">Volume</a></li>
+        <li><a href="">???</a></li>
+        <li><a href="">Profit!</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+        <li><a href="/containers">Containers</a></li>
+        <li><a href="">Images</a></li>
+        <li><a href="">Volume</a></li>
+        <li><a href="">???</a></li>
+        <li><a href="">Profit!</a></li>
+    </ul>
+</aside>
+<main>
+    <div class="row">
+        <h1>Containers</h1>
     </div>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <div class="mdl-grid">
-                <div class="mdl-cell--middle mdl-cell--12-col title">
-                    <h1>Containers</h1>
-                </div>
-                <div class="mdl-cell--12-col">
-                    <button class="btAdd mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--indigo mdl-color-text--white">
-                        <i class="material-icons">add</i>
-                    </button>
-                </div>
-            </div>
-            <div class="mdl-grid">
-                <div class="mdl-cell--12-col">
-                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                        <thead>
-                        <tr>
-                            <th class="small">Status</th>
-                            <th>Node</th>
-                            <th>Name</th>
-                            <th>Image</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{range .}}
-                        <tr>
-                            <td class="status">
-                                <button class="mdl-button mdl-js-button mdl-button--icon statusIcon {{.StatusView}}"
-                                        disabled>
-                                    <i class="material-icons">fiber_manual_record</i>
-                                </button>
-                                {{if eq .StatusView "container-running"}}
-                                <a href="/containers/restart/{{.ID}}" class="btRestart {{.StatusView}}">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">refresh</i>
-                                    </button>
-                                </a>
-                                {{else}}
-                                <a href="/containers/start/{{.ID}}" class="btPlay {{.StatusView}}">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">play_arrow</i>
-                                    </button>
-                                </a>
-                                {{end}}
-                                <a {{if eq .StatusView "container-paused"}} href="/containers/unpause/{{.ID}}" {{else}}
-                                href="/containers/pause/{{.ID}}"{{end}} class="btPause {{.StatusView}}">
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">pause</i>
-                                </button>
-                                </a>
-                                <a href="/containers/stop/{{.ID}}" class="btStop {{.StatusView}}">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">stop</i>
-                                    </button>
-                                </a>
-                                <span>{{.Status}}</span>
-                            </td>
-                            <td>Node here</td>
-                            <td>
-                                {{range .Names}}
-                                {{.}}
-                                {{end}}
-                            </td>
-                            <td>{{.Image}}</td>
-                            <td>
-                                <a href="/containers/inspect/{{.ID}}" class="btInspect mdl-color-text--indigo">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                        <i class="material-icons">search</i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                        {{end}}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th colspan="2">Status</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Node</th>
+                <th colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{range .}}
+            <tr>
+                <td class="status">
+                    <a class="btn-floating
+                    {{if eq .StatusView "container-running"}}
+                    green
+                    {{else if eq .StatusView "container-paused" }}
+                    orange
+                    {{ else }}
+                    red
+                    {{end}}
+                    ">
+                    <i class="material-icons">fiber_manual_record</i>
+                    </a>
+                </td>
+                <td class="status-text">
+                    <span>{{.Status}}</span>
+                </td>
+                <td>Node here</td>
+                <td>
+                    {{range .Names}}
+                    {{.}}
+                    {{end}}
+                </td>
+                <td>{{.Image}}</td>
+                <td class="status-action">
+                    {{if eq .StatusView "container-running"}}
+                    <a href="/containers/restart/{{.ID}}" class="btn-floating green btRestart {{.StatusView}}">
+                        <i class="material-icons">refresh</i>
+                    </a>
+                    {{else}}
+                    <a href="/containers/start/{{.ID}}" class="btn-floating green btPlay {{.StatusView}}">
+                        <i class="material-icons">play_arrow</i>
+                    </a>
+                    {{end}}
+                    <a {{if eq .StatusView "container-paused"}} href="/containers/unpause/{{.ID}}" {{else}}
+                    href="/containers/pause/{{.ID}}"{{end}} class="btn-floating orange btPause {{.StatusView}}">
+                    <i class="material-icons">pause</i>
+                    </a>
+                    <a href="/containers/stop/{{.ID}}" class="btn-floating red btStop {{.StatusView}}">
+                        <i class="material-icons">stop</i>
+                    </a>
+                </td>
+                <td>
+                    <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
+
+                            <i class="material-icons">search</i>
+                    </a>
+                </td>
+            </tr>
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+</main>
 {{template "footer"}}
 {{end}}

@@ -13,15 +13,5 @@ $(document).ready(function () {
         $(this).text(id.substr(0, 12));
     });
 
-    var dialog = document.querySelector('dialog');
-    var showDialogButton = document.querySelector('#raw');
-    if (!dialog.showModal) {
-        dialogPolyfill.registerDialog(dialog);
-    }
-    showDialogButton.addEventListener('click', function () {
-        dialog.showModal();
-    });
-    dialog.querySelector('.close').addEventListener('click', function () {
-        dialog.close();
-    });
+    $(".button-collapse").sideNav();
 });

@@ -1,187 +1,59 @@
 {{define "index"}}
 {{template "header"}}
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">
-            <img src="/app/images/logo.png" alt="Docker WebManager" class="logo"/>
-        </span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/">Containers 1</a>
-            <a class="mdl-navigation__link" href="/">Containers 2</a>
-            <a class="mdl-navigation__link" href="/">Containers 3</a>
-        </nav>
+
+<aside>
+    <a href="#!" class="brand-logo"></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse btn-floating btn-large">
+        <i class="material-icons">menu</i>
+    </a>
+    <ul class="side-nav fixed hide-on-med-and-down">
+        <li><a href="/containers">Container 1 </a></li>
+        <li><a href="">Container 2</a></li>
+        <li><a href="">Container 3</a></li>
+        <li><a href="">Container 4</a></li>
+        <li><a href="">Container 5</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+        <li><a href="/containers">Container 1 </a></li>
+        <li><a href="">Container 2</a></li>
+        <li><a href="">Container 3</a></li>
+        <li><a href="">Container 4</a></li>
+        <li><a href="">Container 5</a></li>
+    </ul>
+</aside>
+<main>
+    <div class="row">
+        <h1 class="title">{{.Name}}</h1>
+        <div class="subtitle-wrapper">Id : <span class="subtitle shorten-id">{{.ID}}</span></div>
     </div>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <div class="mdl-grid">
-                <div class="mdl-cell--middle mdl-cell--12-col title">
-                    <h1 class="title">{{.Name}}</h1>
-                    <div class="subtitle-wrapper">Id : <span class="subtitle shorten-id">{{.ID}}</span></div>
-                </div>
-                <div class="mdl-cell--12-col">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                        Play
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                        Pause
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                        Stop
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                        Restart
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                        Destroy
-                    </button>
-                </div>
-            </div>
-            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                <div class="mdl-tabs__tab-bar">
-                    <a href="#container-info-panel" class="mdl-tabs__tab is-active">Container</a>
-                    <a href="#top-panel" class="mdl-tabs__tab">Top</a>
-                    <a href="#stats-panel" class="mdl-tabs__tab">Stats</a>
-                    <a href="#logs-panel" class="mdl-tabs__tab">Logs</a>
-                    <a href="#console-panel" class="mdl-tabs__tab">Console</a>
-                </div>
+    <div class="row">
 
-                <div class="mdl-tabs__panel is-active" id="container-info-panel">
-                    <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--6-col">
-                            <div class="mdl-grid content-grid">
-                                <div class="mdl-cell--12-col">
-                                    <h3 class="title-infos">Container Infos
-                                        <button id="raw">raw</button>
-                                    </h3>
-                                </div>
-                                <div class="mdl-cell--6-col">
-                                    <div class=""><span class="key">Id : </span><span class="shorten-id">{{.ID}}</span>
-                                    </div>
-                                    <div class=""><span class="key">Name : </span>{{.Name}}</div>
-                                    <div class=""><span class="key">Command :</span>
-                                        {{range .Args}}
-                                        {{.}}
-                                        {{end}}
-                                    </div>
-                                </div>
-                                <div class="mdl-cell--6-col">
-                                    <div class=""><span class="key">Size : </span>{{.ShmSize}}</div>
-                                    <div class=""><span class="key">Image :</span>
-                                        {{range .RepoTags}}
-                                        {{.}}
-                                        {{end}}
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--12-col">
-                                    <h3 class="title-infos">Environment</h3>
-                                </div>
-                                <div class="mdl-cell--6-col">
-                                    <div class=""><span class="key">Hostname : </span>{{.Hostname}}</div>
-                                    <div class=""><span class="key">DomainName : </span>{{.Domainname}}</div>
-                                    <div class=""><span class="key">Path : </span>{{.Path}}</div>
-                                    <div class=""><span class="key">Env :</span>
-                                        {{range .Env}}
-                                        {{.}}
-                                        {{end}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mdl-cell mdl-cell--6-col">
-                            <div class="mdl-grid content-grid">
-                                <div class="mdl-cell--12-col">
-                                    <h3 class="title-infos">Network Infos</h3>
-                                </div>
-                                <div class="mdl-cell--12-col">
-                                    <div class=""><span class="key">IP : </span><span
-                                            class="shorten-id">{{.IPAddress}}</span></div>
-                                    <div class=""><span class="key">Gateway : </span>{{.Gateway}}</div>
-                                    <div class=""><span class="key">MAC : </span>{{.MacAddress}}</div>
-                                </div>
-                            </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--12-col">
-                                    <h3 class="title-infos">Exposed Ports </h3>
-                                </div>
-                                <div class="mdl-cell--12-col">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>Private</th>
-                                            <th>Public</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {{range .ExposedPorts}}
-                                        <tr>
-                                            <td>{{.Private}}</td>
-                                            <td><i class="material-icons">forward</i></td>
-                                            <td>{{.Public}}</td>
-                                        </tr>
-                                        {{end}}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">Container info</a></li>
+                <li class="tab col s3"><a class="active" href="#test2">Stats</a></li>
+                <li class="tab col s3"><a href="#test3">Logs</a></li>
+                <li class="tab col s3"><a href="#test4">Console</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <div class="col s12">
+                <div class="col s6">
+                    <h3>Container infos</h3>
                 </div>
-                <div class="mdl-tabs__panel" id="top-panel">
-                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                        <thead>
-                        <tr>
-                            <th class="mdl-data-table__cell--non-numeric">Material</th>
-                            <th>Quantity</th>
-                            <th>Unit price</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                            <td>25</td>
-                            <td>$2.90</td>
-                        </tr>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                            <td>50</td>
-                            <td>$1.25</td>
-                        </tr>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                            <td>10</td>
-                            <td>$2.35</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mdl-tabs__panel" id="targaryens-panel">
-                    <ul>
-                        <li>Viserys</li>
-                        <li>Daenerys</li>
-                    </ul>
+                <div class="col s6">
+                    <h3>Networks</h3>
                 </div>
             </div>
         </div>
 
-        <!-- Dialog raw data -->
-        <dialog class="mdl-dialog raw-data">
-            <h4 class="mdl-dialog__title">Raw Data</h4>
-            <div class="mdl-dialog__content">
-                <div id="JSON">
-                    {{.RawData}}
-                </div>
-            </div>
-            <div class="mdl-dialog__actions">
-                <button type="button" class="mdl-button close">Close</button>
-            </div>
-        </dialog>
 
-    </main>
-</div>
-
-
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+    </div>
+</main>
 {{template "footer"}}
 {{end}}

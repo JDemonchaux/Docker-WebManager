@@ -1,19 +1,26 @@
-.mdl-data-table {
-    width: 100%;
+ul#nav-mobile {
+    top: 0;
+    margin: 0;
+    width: 240px;
+    overflow: hidden;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    height: calc(100% + 60px);
+    height: -moz-calc(100%);
+    padding-bottom: 60px;
+    background-color: #FFF;
+    z-index: 999;
+    will-change: left;
 }
 
-.mdl-layout__drawer {
-    padding-top: 1px;
-    overflow: visible;
+.button-collapse {
+    color: black;
 }
 
-.mdl-layout-title {
-    padding-left: 1rem !important;
-}
-
-.title {
-    /*text-align: center;*/
-    text-indent: 1rem;
+main {
+    margin-left: 242px;
+    margin-top: -4rem;
 }
 
 table, tr, td, th {
@@ -21,28 +28,20 @@ table, tr, td, th {
 }
 
 .small {
-    width: 1rem;
+    width: 2rem;
 }
 
-.statusIcon.container-running > i {
-    color: green !important;
-}
-
-.statusIcon.container-paused > i {
-    color: orange !important;
-}
-
-.statusIcon.container-stopped > i {
-    color: red !important;
+td.status {
+    width:4rem;
+    padding-left:1rem;
 }
 
 td.status > a {
     text-decoration: none;
-    color: black;
 }
 
-a.btPlay {
-    color: green;
+td.status-text {
+    width:14rem;
 }
 
 .disabled > button {
@@ -54,13 +53,18 @@ a.btPlay {
     float: right;
 }
 
-
 /* cache les checkbx du tableau */
 /*th > .mdl-checkbox, td > .mdl-checkbox {*/
-    /*display:none !important;*/
+/*display:none !important;*/
 /*}*/
 @media screen and (max-width: 1024px) {
     img.logo {
         display: none;
+    }
+    main {
+        margin-left:0;
+    }
+    main > .row > h1 {
+        text-indent:4rem;
     }
 }
