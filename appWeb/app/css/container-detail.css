@@ -3,7 +3,7 @@
 }
 
 .title {
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
 .subtitle-wrapper {
@@ -12,14 +12,14 @@
 }
 
 .title-infos {
-    display:block;
-    margin-top:0;
-    color:#767676;
-    font-weight:300;
+    display: block;
+    margin-top: 0;
+    color: #767676;
+    font-weight: 300;
 }
 
 span.key {
-    font-weight:bold;
+    font-weight: bold;
 }
 
 button.raw {
@@ -27,9 +27,44 @@ button.raw {
     width: 2rem;
     height: 1rem;
     font-size: 8px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .content-grid {
     margin-bottom: 2rem;
+}
+
+.tabs, .tabs > li > a {
+    color: #3f51b5 !important;
+}
+
+.indicator {
+    background-color: #3f51b5 !important;
+}
+
+.collection-header > h3, .collection-header > div > h3 {
+    text-indent: 1rem;
+}
+
+div.raw-wrapper {
+    position:absolute;
+    left:295px;
+    top:38px;
+}
+
+a.raw {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    word-wrap: break-word;
 }
