@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    $(".modal-trigger").leanModal({
+        dismissible: true,
+        ready: function () {
+            var data = $('.json-data').text();
+            $("#jjson").jJsonViewer(data);
+        },
+        complete: function () {
+            $('.lean-overlay').each(function () {
+                $(this).remove();
+            })
+        }
+    });
+
     $(".btPlay.container-running, .btPlay.container-paused, .btPause.container-stopped, .btStop.container-paused, .btStop.container-stopped").each(function () {
         $(this).on('click', function (e) {
             e.preventDefault();
