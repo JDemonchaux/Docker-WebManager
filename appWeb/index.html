@@ -33,9 +33,9 @@
             <thead>
             <tr>
                 <th colspan="2">Status</th>
+                <th>Node</th>
                 <th>Name</th>
                 <th>Image</th>
-                <th>Node</th>
                 <th colspan="2">Action</th>
             </tr>
             </thead>
@@ -82,17 +82,38 @@
                     <a href="/containers/stop/{{.ID}}" class="btn-floating red btStop {{.StatusView}}">
                         <i class="material-icons">stop</i>
                     </a>
+                    <a href="#safe-delete" data-href="/containers/delete/{{.ID}}"
+                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
+                        <i class="material-icons">delete</i>
+                    </a>
                 </td>
                 <td>
                     <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
 
-                            <i class="material-icons">search</i>
+                        <i class="material-icons">search</i>
                     </a>
                 </td>
             </tr>
             {{end}}
             </tbody>
         </table>
+    </div>
+
+    <!-- modal safe delete -->
+    <div id="safe-delete" class="modal">
+        <div class="modal-content">
+            <h4>Confirm delete</h4>
+            <form method="POST">
+                <p>Please type DELETE in order to process the delete</p>
+                <label for="input-safe-delete">Type here</label>
+                <input type="text" class="validate" id="input-safe-delete"/>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+            <a href="#!" id="bt-safe-delete" class="modal-action modal-close waves-effect waves-green btn-flat">DELETE</a>
+        </div>
     </div>
 </main>
 {{template "footer"}}

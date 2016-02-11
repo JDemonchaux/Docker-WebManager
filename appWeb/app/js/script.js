@@ -27,4 +27,8 @@ $(document).ready(function () {
     });
 
     $(".button-collapse").sideNav();
+
+    $("#bt-safe-delete").on('click', function() {
+
+    });
 });
