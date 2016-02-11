@@ -7,13 +7,14 @@
         <i class="material-icons">menu</i>
     </a>
     <ul class="side-nav fixed hide-on-med-and-down">
+        <li class="back"><a href="/containers"><i class="material-icons">arrow_back</i> <span>Go Back</span></a></li>
         {{range .MenuContainers}}
-        <li><a href="/containers/{{.ID}}">{{.Name}}</a></li>
+        <li><a href="/containers/inspect/{{.ID}}">{{.Name}}</a></li>
         {{end}}
     </ul>
     <ul class="side-nav" id="mobile-demo">
         {{range .MenuContainers}}
-        <li><a href="/containers/{{.ID}}">{{.Name}}</a></li>
+        <li><a href="/containers/inspect/{{.ID}}">{{.Name}}</a></li>
         {{end}}
     </ul>
 </aside>

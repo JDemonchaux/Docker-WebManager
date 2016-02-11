@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    $("#bt-safe-delete").prop("disabled", true);
+
     $(".modal-trigger").leanModal({
         dismissible: true,
         ready: function () {
@@ -28,7 +31,20 @@ $(document).ready(function () {
 
     $(".button-collapse").sideNav();
 
-    $("#bt-safe-delete").on('click', function() {
+    $("#input-safe-delete").on('keyup', function () {
+        var deleteOk = false;
+        console.log($(this).val());
+        deleteOk = $(this).val() == "DELETE";
 
+
+        if (deleteOk) {
+            var url = $(".btDelete").data("href");
+            $("#form-safe-delete").attr("action", url);
+            $("#bt-safe-delete").prop("disabled", false);
+        }
+    });
+
+    $("#bt-safe-delete").on('click', function () {
+        $("#form-safe-delete").submit();
     });
 });

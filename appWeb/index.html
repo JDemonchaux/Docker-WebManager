@@ -44,7 +44,7 @@
             <tr>
                 <td class="status">
                     <a class="btn-floating
-                    {{if eq .StatusView "container-running"}}
+                    {{if eq .StatusView " container-running"}}
                     green
                     {{else if eq .StatusView "container-paused" }}
                     orange
@@ -86,6 +86,10 @@
                        class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
                         <i class="material-icons">delete</i>
                     </a>
+                    <!--<a data-href="#safe-delete" href="/containers/delete/{{.ID}}"
+                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
+                        <i class="material-icons">delete</i>
+                    </a>-->
                 </td>
                 <td>
                     <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
@@ -103,16 +107,15 @@
     <div id="safe-delete" class="modal">
         <div class="modal-content">
             <h4>Confirm delete</h4>
-            <form method="POST">
+            <form method="GET" id="form-safe-delete">
                 <p>Please type DELETE in order to process the delete</p>
                 <label for="input-safe-delete">Type here</label>
                 <input type="text" class="validate" id="input-safe-delete"/>
             </form>
-
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Close</a>
-            <a href="#!" id="bt-safe-delete" class="modal-action modal-close waves-effect waves-green btn-flat">DELETE</a>
+            <button class="btn modal-action modal-close waves-effect waves-red ">Close</button>
+            <button id="bt-safe-delete" class="btn modal-action modal-close waves-effect waves-green ">DELETE</button>
         </div>
     </div>
 </main>

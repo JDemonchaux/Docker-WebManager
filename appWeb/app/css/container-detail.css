@@ -1,3 +1,16 @@
+li.back > a > span, li.back > a > i {
+    font-size:2rem;
+}
+
+li.back > a > span {
+    margin-left:2rem;
+}
+
+li.back > a > i {
+    position: absolute;
+    top: 1rem;
+}
+
 .list-info {
     list-style: none;
 }
