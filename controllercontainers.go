@@ -148,6 +148,7 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	ii.Get(ic.Image)
 	tc := new(ToptContainer)
 	tc.Get(ic.ID)
+	lc := new(ListContainers)
 
 	contJson := new(ListContainers)
 	contJson.GetByID(id)
@@ -173,11 +174,16 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		MacAddress   string
 		ExposedPorts []ExposedPorts
 	}
+	type MenuContainer struct {
+		ID string
+		Name string
+	}
 	type DATA struct {
 		ContainerInfo
 		RawData string
 		NetworkInfo
 		ToptContainer
+		MenuContainers []MenuContainer
 	}
 
 	contInfo := new(ContainerInfo)
@@ -202,12 +208,17 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 					strconv.FormatInt(int64(port.PublicPort),10)+"/"+port.Type})
 		}
 	}
+	menuCont := new([]MenuContainer)
+	for _,c := range *lc{
+		*menuCont = append(*menuCont,MenuContainer{c.ID, c.Names[0]})
+	}
 
 	data := new(DATA)
 	data.ContainerInfo = *contInfo
 	data.NetworkInfo = *netInfo
 	data.ToptContainer = *tc
 	data.RawData = ic.RawData
+	data.MenuContainers = *menuCont
 	//end generate
 
 	tmpl, err := template.ParseFiles("appWeb/header.html", "appWeb/container-detail.html", "appWeb/footer.html")
