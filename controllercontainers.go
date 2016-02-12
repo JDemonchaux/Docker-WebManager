@@ -13,61 +13,61 @@ import (
 func containersStart(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/start", "", nil)
+	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/start", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, baseUrl, http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
 	return
 }
 func containersStop(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/stop", "", nil)
+	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/stop", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, baseUrl, http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
 	return
 }
 func containersPause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/pause", "", nil)
+	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/pause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, baseUrl, http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
 	return
 }
 func containersRestart(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/restart", "", nil)
+	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/restart", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, baseUrl, http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
 	return
 }
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(apiUrl + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
+	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, baseUrl, http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
 	return
 }
 
@@ -77,15 +77,17 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 	client := &http.Client{}
 	reqDelete, err := http.NewRequest(
 		"DELETE",
-		apiUrl + "containers/" + p[len(p) - 1] + "?v=1",
+		settings.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1",
 		bytes.NewBuffer([]byte("[]")))
 	if err != nil {
 		log.Println(err)
 	}
-	client.Do(reqDelete)
+	log.Println(client.Do(reqDelete))
+
+	log.Println(settings.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1")
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, baseUrl, http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
 	return
 }
 

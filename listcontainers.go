@@ -54,7 +54,7 @@ func (x *ListContainers)Decode(r io.Reader) (err error) {
 }
 
 func (x *ListContainers)Get() (err error){
-	resp, err := http.Get(apiUrl + "containers/json?all=1")
+	resp, err := http.Get(settings.ApiUrl + "containers/json?all=1")
 	if err != nil {
 		return err
 	}
@@ -73,7 +73,7 @@ func (x *ListContainers)Get() (err error){
 }
 
 func (x *ListContainers)GetByID(id string) (err error){
-	resp, err := http.Get(apiUrl + "containers/json?filters={\"id\":[\""+ id + "\"]}")
+	resp, err := http.Get(settings.ApiUrl + "containers/json?filters={\"id\":[\""+ id + "\"]}")
 	if err != nil {
 		return err
 	}
