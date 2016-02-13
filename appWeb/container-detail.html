@@ -9,7 +9,19 @@
     <ul class="side-nav fixed hide-on-med-and-down">
         <li class="back"><a href="/containers"><i class="material-icons">arrow_back</i> <span>Go Back</span></a></li>
         {{range .MenuContainers}}
-        <li><a href="/containers/inspect/{{.ID}}">{{.Name}}</a></li>
+        <li>
+            <a class='menuLink {{if eq .StatusView "container-stopped"}} disabled {{end}}' href="/containers/inspect/{{.ID}}">{{.Name}}</a>
+            <i class="menuStatus material-icons
+            {{if eq .StatusView "container-running"}}
+                green
+                {{else if eq .StatusView "container-paused" }}
+                orange
+                {{ else }}
+                red
+                {{end}}
+            ">fiber_manual_record</i>
+            </a>
+        </li>
         {{end}}
     </ul>
     <ul class="side-nav" id="mobile-demo">
@@ -43,7 +55,7 @@
                         <li class="collection-header">
                             <div class="title-raw">
                                 <h3>Container info</h3>
-                                <div class="raw-wrapper"><a class="raw modal-trigger" href="#raw-data"
+                                <div class="raw-wrapper"><a class='raw modal-trigger' href="#raw-data"
                                                             role="button">raw</a></div>
                             </div>
                         </li>

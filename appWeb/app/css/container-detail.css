@@ -15,6 +15,20 @@ li.back > a > i {
     list-style: none;
 }
 
+.menuLink {
+    display:inline !important;
+}
+.menuLink.disabled {
+    cursor:default;
+}
+.menuStatus {
+    display:inline !important;
+    color:white !important;
+    float:right;
+    margin-top:1.25rem;
+    border-radius:1rem;
+}
+
 .title {
     margin-bottom: 0px;
 }

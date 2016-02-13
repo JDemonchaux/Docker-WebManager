@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-
+    $('a.disabled').on('click', function(e) {
+        e.preventDefault();
+    });
     $(".modal-trigger").leanModal({
         dismissible: true,
         ready: function () {
