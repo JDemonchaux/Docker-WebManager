@@ -11,6 +11,7 @@ var settings SettingType
 
 func main() {
 
+
 	err := settings.ReadSettings()
 	if err != nil {
 		settings.ApiUrl = "http://192.168.0.254:2375/"
@@ -22,10 +23,11 @@ func main() {
 	if _, err := os.Stat(settings.Sock); err != nil {
 		log.Println(err)
 	}else {
-		go unixSock(settings.Sock)
 		settings.ApiUrl  = "http://127.0.0.1:1234/"
+		go unixSock(settings.Sock)
 	}
 	server()
+
 }
 
 

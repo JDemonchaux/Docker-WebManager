@@ -82,7 +82,12 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-	log.Println(client.Do(reqDelete))
+
+	rep, err := client.Do(reqDelete)
+	if err != nil {
+		log.Println("err", err)
+	}
+	log.Println("rep", rep)
 
 	log.Println(settings.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1")
 
@@ -134,7 +139,6 @@ func containers(w http.ResponseWriter, req *http.Request) {
 	req.Body.Close()
 }
 
-
 func containersInspect(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	log.Println("containersInspect")
@@ -165,6 +169,7 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		Hostname   string
 		Domainname string
 		Env        []string
+		Status     string
 		ShmSize    int
 	}
 	type ExposedPorts struct {
@@ -178,12 +183,12 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		ExposedPorts []ExposedPorts
 	}
 	type MenuContainer struct {
-		ID string
+		ID   string
 		Name string
 	}
 	type DATA struct {
 		ContainerInfo
-		RawData string
+		RawData        string
 		NetworkInfo
 		ToptContainer
 		MenuContainers []MenuContainer
@@ -199,21 +204,22 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	contInfo.Hostname = ic.Config.Hostname
 	contInfo.Env = ic.Config.Env
 	contInfo.ShmSize = ic.HostConfig.ShmSize
+	contInfo.Status = ic.State.Status
 
 	netInfo := new(NetworkInfo)
 	netInfo.IPAddress = ic.NetworkSettings.IPAddress
 	netInfo.Gateway = ic.NetworkSettings.Gateway
 	netInfo.MacAddress = ic.NetworkSettings.MacAddress
-	for _, c := range *contJson{
-		for _,port := range c.Ports {
+	for _, c := range *contJson {
+		for _, port := range c.Ports {
 			netInfo.ExposedPorts = append(netInfo.ExposedPorts,
-				ExposedPorts{strconv.FormatInt(int64(port.PrivatePort),10),
-					strconv.FormatInt(int64(port.PublicPort),10)+"/"+port.Type})
+				ExposedPorts{strconv.FormatInt(int64(port.PrivatePort), 10),
+					strconv.FormatInt(int64(port.PublicPort), 10) + "/" + port.Type})
 		}
 	}
 	menuCont := new([]MenuContainer)
-	for _,c := range *lc{
-		*menuCont = append(*menuCont,MenuContainer{c.ID, c.Names[0]})
+	for _, c := range *lc {
+		*menuCont = append(*menuCont, MenuContainer{c.ID, c.Names[0]})
 	}
 
 	data := new(DATA)
