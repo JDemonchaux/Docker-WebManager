@@ -32,8 +32,8 @@ table, tr, td, th {
 }
 
 td.status {
-    width:4rem;
-    padding-left:1rem;
+    width: 4rem;
+    padding-left: 1rem;
 }
 
 td.status > a {
@@ -41,7 +41,7 @@ td.status > a {
 }
 
 td.status-text {
-    width:14rem;
+    width: 14rem;
 }
 
 .disabled > button {
@@ -53,6 +53,21 @@ td.status-text {
     float: right;
 }
 
+.edit-button {
+    display: inline;
+    cursor: pointer;
+    visibility: hidden;
+    float:right;
+}
+
+.edit-input {
+    width:55% !important;
+}
+
+.input-value {
+    display: none;
+}
+
 /* cache les checkbx du tableau */
 /*th > .mdl-checkbox, td > .mdl-checkbox {*/
 /*display:none !important;*/
@@ -61,10 +76,12 @@ td.status-text {
     img.logo {
         display: none;
     }
+
     main {
-        margin-left:0;
+        margin-left: 0;
     }
+
     main > .row > h1 {
-        text-indent:4rem;
+        text-indent: 4rem;
     }
 }
