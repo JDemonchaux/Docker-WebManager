@@ -97,18 +97,18 @@
                     <a href="/containers/stop/{{.ID}}" class="btn-floating red btStop {{.StatusView}}">
                         <i class="material-icons">stop</i>
                     </a>
-                    <a href="#safe-delete" data-href="/containers/delete/{{.ID}}"
-                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
-                        <i class="material-icons">delete</i>
-                    </a>
                    <!-- <a data-href="#safe-delete" href="/containers/delete/{{.ID}}"
                        class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
                         <i class="material-icons">delete</i>
                     </a>-->
                 </td>
                 <td>
-                    <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
+                    <a href="#safe-delete" data-href="/containers/delete/{{.ID}}"
+                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
+                        <i class="material-icons">delete</i>
+                    </a>
 
+                    <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
                         <i class="material-icons">search</i>
                     </a>
                 </td>
