@@ -27,7 +27,7 @@ $(document).ready(function () {
     $(".edit-button").on('click', function () {
         $(this).parent().find('.input-value').show();
         var value = $(this).parent().find('.edit-input').val();
-        console.log(value);
+        $(this).parent().find('.edit-input').val($.trim(value));
         $(this).parent().find('.show-value').hide();
         $(this).hide();
     });
