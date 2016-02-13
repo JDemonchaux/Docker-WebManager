@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    $("#bt-safe-delete").prop("disabled", true);
 
     $(".modal-trigger").leanModal({
         dismissible: true,
@@ -13,6 +12,24 @@ $(document).ready(function () {
                 $(this).remove();
             })
         }
+    });
+
+    // Show edit button close to container name
+    $('td.name').hover(function () {
+        // mouseIn
+        $(this).find(".edit-button").css("visibility", "visible");
+    }, function () {
+        // mouseOut
+        $(this).find(".edit-button").css("visibility", "hidden");
+    });
+
+    // pop an input for name editing
+    $(".edit-button").on('click', function () {
+        $(this).parent().find('.input-value').show();
+        var value = $(this).parent().find('.edit-input').val();
+        console.log(value);
+        $(this).parent().find('.show-value').hide();
+        $(this).hide();
     });
 
     $(".btPlay.container-running, .btPlay.container-paused, .btPause.container-stopped, .btStop.container-paused, .btStop.container-stopped").each(function () {
@@ -31,20 +48,20 @@ $(document).ready(function () {
 
     $(".button-collapse").sideNav();
 
+
     $("#input-safe-delete").on('keyup', function () {
         var deleteOk = false;
         console.log($(this).val());
         deleteOk = $(this).val() == "DELETE";
-
-
         if (deleteOk) {
             var url = $(".btDelete").data("href");
             $("#form-safe-delete").attr("action", url);
             $("#bt-safe-delete").prop("disabled", false);
         }
     });
-
+    $("#bt-safe-delete").prop("disabled", true);
     $("#bt-safe-delete").on('click', function () {
-        $("#form-safe-delete").submit();
+        var url = $("#form-safe-delete").attr("action", url);
+        windows.location.href = url;
     });
 });

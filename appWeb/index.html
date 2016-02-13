@@ -44,7 +44,7 @@
             <tr>
                 <td class="status">
                     <a class="btn-floating
-                    {{if eq .StatusView " container-running"}}
+                    {{if eq .StatusView "container-running"}}
                     green
                     {{else if eq .StatusView "container-paused" }}
                     orange
@@ -59,10 +59,25 @@
                     <span>{{.Status}}</span>
                 </td>
                 <td>Node here</td>
-                <td>
-                    {{range .Names}}
-                    {{.}}
-                    {{end}}
+                <td class="name">
+                    <div class="edit-button">
+                        <i class="tiny material-icons">edit</i>
+                    </div>
+                    <div class="show-value">
+                        {{range .Names}}
+                        {{.}}
+                        {{end}}
+                    </div>
+                    <div class="input-value">
+                        <form action="/containers/rename/{{.ID}}">
+                            <input type="text" class="edit-input" value="{{range .Names}}
+                        {{.}}
+                        {{end}}" size="10"/>
+                            <button class="btn-floating" type="submit">
+                                <i class="material-icons">send</i>
+                            </button>
+                        </form>
+                    </div>
                 </td>
                 <td>{{.Image}}</td>
                 <td class="status-action">
@@ -82,18 +97,18 @@
                     <a href="/containers/stop/{{.ID}}" class="btn-floating red btStop {{.StatusView}}">
                         <i class="material-icons">stop</i>
                     </a>
-                    <a href="#safe-delete" data-href="/containers/delete/{{.ID}}"
-                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
-                        <i class="material-icons">delete</i>
-                    </a>
-                    <!--<a data-href="#safe-delete" href="/containers/delete/{{.ID}}"
+                   <!-- <a data-href="#safe-delete" href="/containers/delete/{{.ID}}"
                        class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
                         <i class="material-icons">delete</i>
                     </a>-->
                 </td>
                 <td>
-                    <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
+                    <a href="#safe-delete" data-href="/containers/delete/{{.ID}}"
+                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
+                        <i class="material-icons">delete</i>
+                    </a>
 
+                    <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
                         <i class="material-icons">search</i>
                     </a>
                 </td>
