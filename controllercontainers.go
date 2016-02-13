@@ -71,6 +71,19 @@ func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	return
 }
 
+func containersRename(w http.ResponseWriter, req *http.Request) {
+	p := strings.Split(req.URL.Path, "/")
+
+	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/rename?name=new_name", "", nil)
+	if err != nil {
+		log.Println(err)
+	}
+
+	log.Println(http.StatusFound)
+	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	return
+}
+
 func containersDelete(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
@@ -169,7 +182,6 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		Hostname   string
 		Domainname string
 		Env        []string
-		Status     string
 		ShmSize    int
 	}
 	type ExposedPorts struct {
@@ -183,8 +195,9 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		ExposedPorts []ExposedPorts
 	}
 	type MenuContainer struct {
-		ID   string
-		Name string
+		ID     string
+		Name   string
+		StatusView string
 	}
 	type DATA struct {
 		ContainerInfo
@@ -204,7 +217,6 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	contInfo.Hostname = ic.Config.Hostname
 	contInfo.Env = ic.Config.Env
 	contInfo.ShmSize = ic.HostConfig.ShmSize
-	contInfo.Status = ic.State.Status
 
 	netInfo := new(NetworkInfo)
 	netInfo.IPAddress = ic.NetworkSettings.IPAddress
@@ -219,7 +231,20 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	}
 	menuCont := new([]MenuContainer)
 	for _, c := range *lc {
-		*menuCont = append(*menuCont, MenuContainer{c.ID, c.Names[0]})
+		mc := new(MenuContainer)
+		mc.ID = c.ID
+		mc.Name = c.Names[0]
+
+		if b, _ := regexp.MatchString("Up", c.Status); b != false {
+			mc.StatusView = "container-running"
+		}
+		if b, _ := regexp.MatchString("Paused", c.Status); b != false {
+			mc.StatusView = "container-paused"
+		}
+		if b, _ := regexp.MatchString("Exited", c.Status); b != false {
+			mc.StatusView = "container-stopped"
+		}
+		*menuCont = append(*menuCont, *mc)
 	}
 
 	data := new(DATA)
