@@ -79,7 +79,7 @@
                         {{end}}
                     </div>
                     <div class="input-value">
-                        <form action="/containers/rename/{{.ID}}" method="GET">
+                        <form action="/containers/rename/{{.ID}}" method="POST">
                             <input type="text" class="edit-input" name="newName" value="{{range .Names}}
                         {{.}}
                         {{end}}" size="10"/>
