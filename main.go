@@ -8,7 +8,7 @@ import (
 	"./authentication"
 )
 
-var config settings.SettingsType
+var config settingss.SettingsType
 
 func main() {
 
