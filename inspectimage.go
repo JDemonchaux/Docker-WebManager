@@ -73,7 +73,7 @@ func (x *InspectImages)Decode(r io.Reader) (err error) {
 }
 
 func (x *InspectImages)Get(ID string) (err error){
-	resp, err := http.Get(settings.ApiUrl + "images/"+ID+"/json")
+	resp, err := http.Get(config.ApiUrl + "images/"+ID+"/json")
 	if err != nil {
 		return err
 	}

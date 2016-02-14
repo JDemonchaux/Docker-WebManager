@@ -25,7 +25,7 @@ func (x *ListImages)Decode(r io.Reader) (err error) {
 }
 
 func (x *ListImages)Get() (err error){
-	resp, err := http.Get(settings.ApiUrl + "images/json")
+	resp, err := http.Get(config.ApiUrl + "images/json")
 	if err != nil {
 		return err
 	}

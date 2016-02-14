@@ -10,77 +10,80 @@ import (
 	"strconv"
 )
 
+
 func containersStart(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/start", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/start", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 func containersStop(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/stop", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/stop", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 func containersPause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/pause", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/pause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 func containersRestart(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/restart", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/restart", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 
 func containersRename(w http.ResponseWriter, req *http.Request) {
 	p := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(settings.ApiUrl + "containers/" + p[len(p) - 1] + "/rename?name=new_name", "", nil)
+	name := req.PostFormValue("newName")
+
+	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/rename?name="+name, "", nil)
 	if err != nil {
 		log.Println(err)
 	}
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 
@@ -90,7 +93,7 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 	client := &http.Client{}
 	reqDelete, err := http.NewRequest(
 		"DELETE",
-		settings.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1",
+		config.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1",
 		bytes.NewBuffer([]byte("[]")))
 	if err != nil {
 		log.Println(err)
@@ -102,10 +105,10 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 	}
 	log.Println("rep", rep)
 
-	log.Println(settings.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1")
+	log.Println(config.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1")
 
 	log.Println(http.StatusFound)
-	http.Redirect(w, req, settings.BaseUrl, http.StatusFound)
+	http.Redirect(w, req, config.BaseUrl, http.StatusFound)
 	return
 }
 
@@ -183,6 +186,7 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 		Domainname string
 		Env        []string
 		ShmSize    int
+		SizeRootFs int
 	}
 	type ExposedPorts struct {
 		Private string
@@ -216,7 +220,8 @@ func containersInspect(w http.ResponseWriter, req *http.Request) {
 	contInfo.Path = ic.Path
 	contInfo.Hostname = ic.Config.Hostname
 	contInfo.Env = ic.Config.Env
-	contInfo.ShmSize = ic.HostConfig.ShmSize
+	contInfo.ShmSize = (ic.SizeRootFs/1024)/1024
+	contInfo.SizeRootFs = (ic.SizeRootFs/1024)/1024
 
 	netInfo := new(NetworkInfo)
 	netInfo.IPAddress = ic.NetworkSettings.IPAddress

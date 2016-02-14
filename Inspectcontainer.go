@@ -206,7 +206,7 @@ func (x *InspectContainer)Decode(r io.Reader) (err error) {
 }
 
 func (x *InspectContainer)Get(ID string) (err error){
-	resp, err := http.Get(settings.ApiUrl + "containers/"+ID+"/json")
+	resp, err := http.Get(config.ApiUrl + "containers/"+ID+"/json?size=1")
 	if err != nil {
 		return err
 	}

@@ -20,7 +20,7 @@ func (x *ToptContainer)Decode(r io.Reader) (err error) {
 }
 
 func (x *ToptContainer)Get(ID string) (err error){
-	resp, err := http.Get(settings.ApiUrl + "containers/"+ID+"/top?ps_args=aux")
+	resp, err := http.Get(config.ApiUrl + "containers/"+ID+"/top?ps_args=aux")
 	if err != nil {
 		return err
 	}
