@@ -12,9 +12,9 @@ import (
 
 
 func containersStart(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/start", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/start", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -24,9 +24,9 @@ func containersStart(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersStop(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/stop", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/stop", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -36,9 +36,9 @@ func containersStop(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersPause(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/pause", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/pause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -48,9 +48,9 @@ func containersPause(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersRestart(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/restart", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/restart", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -60,9 +60,9 @@ func containersRestart(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
-	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/unpause", "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/unpause", "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -73,11 +73,11 @@ func containersUnpause(w http.ResponseWriter, req *http.Request) {
 }
 
 func containersRename(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
-	name := req.PostFormValue("newName")
+	name := strings.Split(req.PostFormValue("newName"),"/")
 
-	_, err := http.Post(config.ApiUrl + "containers/" + p[len(p) - 1] + "/rename?name="+name, "", nil)
+	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/rename?name="+name[0], "", nil)
 	if err != nil {
 		log.Println(err)
 	}
@@ -88,12 +88,12 @@ func containersRename(w http.ResponseWriter, req *http.Request) {
 }
 
 func containersDelete(w http.ResponseWriter, req *http.Request) {
-	p := strings.Split(req.URL.Path, "/")
+	id := strings.Split(req.URL.Path, "/")
 
 	client := &http.Client{}
 	reqDelete, err := http.NewRequest(
 		"DELETE",
-		config.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1",
+		config.ApiUrl + "containers/" + id[len(id) - 1] + "?v=1",
 		bytes.NewBuffer([]byte("[]")))
 	if err != nil {
 		log.Println(err)
@@ -105,7 +105,7 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 	}
 	log.Println("rep", rep)
 
-	log.Println(config.ApiUrl + "containers/" + p[len(p) - 1] + "?v=1")
+	log.Println(config.ApiUrl + "containers/" + id[len(id) - 1] + "?v=1")
 
 	log.Println(http.StatusFound)
 	http.Redirect(w, req, config.BaseUrl, http.StatusFound)

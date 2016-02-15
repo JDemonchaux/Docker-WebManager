@@ -8,7 +8,7 @@ import (
 	"./authentication"
 )
 
-var config settingss.SettingsType
+var config settings.SettingsType
 
 func main() {
 
@@ -16,7 +16,7 @@ func main() {
 	err := config.ReadSettings()
 	if err != nil {
 		config.ApiUrl = "http://192.168.0.254:2375/"
-		config.BaseUrl = "https://127.0.0.1/"
+		config.BaseUrl = "http://127.0.0.1:8080/"
 		config.Sock = "/var/run/docker.sock"
 		config.SavSettings()
 	}
@@ -49,7 +49,9 @@ func server(){
 	http.HandleFunc("/containers/pause/", containersPause)
 	http.HandleFunc("/containers/unpause/", containersUnpause)
 	http.HandleFunc("/containers/delete/", containersDelete)
-	log.Println("Serving at " + config.BaseUrl + ":443...")
-	log.Fatal(http.ListenAndServeTLS(":443", "certificate/server.cert", "certificate/server.key", nil))
+	log.Println("Serving at " + config.BaseUrl + "...")
+	log.Fatal(http.ListenAndServe(":8080", nil))
+	//log.Println("Serving at " + config.BaseUrl + ":443...")
+	//log.Fatal(http.ListenAndServeTLS(":443", "certificate/server.cert", "certificate/server.key", nil))
 
 }
