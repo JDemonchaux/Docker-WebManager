@@ -94,3 +94,7 @@ a.raw {
 .modal {
     word-wrap: break-word;
 }
+
+.no-info {
+    text-indent:2rem;
+}

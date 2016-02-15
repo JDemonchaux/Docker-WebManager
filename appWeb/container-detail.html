@@ -25,6 +25,7 @@
         {{end}}
     </ul>
     <ul class="side-nav" id="mobile-demo">
+        <li class="back"><a href="/containers"><i class="material-icons">arrow_back</i> <span>Go Back</span></a></li>
         {{range .MenuContainers}}
         <li><a href="/containers/inspect/{{.ID}}">{{.Name}}</a></li>
         {{end}}
@@ -142,6 +143,7 @@
 
         <div id="top">
             <div class="col s12">
+                {{if .Processes}}
                 <table>
                     <thead>
                     <tr>
@@ -160,6 +162,9 @@
                     {{end}}
                     </tbody>
                 </table>
+                {{else}}
+                <h5 class="no-info">No processes informations</h5>
+                {{end}}
             </div>
         </div>
 
