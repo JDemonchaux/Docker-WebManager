@@ -21,6 +21,14 @@ li.back > a > i {
 .menuLink.disabled {
     cursor:default;
 }
+
+.menuText {
+    max-width:9.2rem !important;
+    overflow: hidden !important;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+
 .menuStatus {
     display:inline !important;
     color:white !important;

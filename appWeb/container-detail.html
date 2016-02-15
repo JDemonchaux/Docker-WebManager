@@ -10,7 +10,7 @@
         <li class="back"><a href="/containers"><i class="material-icons">arrow_back</i> <span>Go Back</span></a></li>
         {{range .MenuContainers}}
         <li>
-            <a class='menuLink' href="/containers/inspect/{{.ID}}">{{.Name}}</a>
+            <a class='menuLink' href="/containers/inspect/{{.ID}}"><div class="menuText">{{.Name}}</div></a>
             <i class="menuStatus material-icons
             {{if eq .StatusView "container-running"}}
                 green
