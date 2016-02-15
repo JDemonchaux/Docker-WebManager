@@ -10,7 +10,7 @@
         <li class="back"><a href="/containers"><i class="material-icons">arrow_back</i> <span>Go Back</span></a></li>
         {{range .MenuContainers}}
         <li>
-            <a class='menuLink {{if eq .StatusView "container-stopped"}} disabled {{end}}' href="/containers/inspect/{{.ID}}">{{.Name}}</a>
+            <a class='menuLink' href="/containers/inspect/{{.ID}}">{{.Name}}</a>
             <i class="menuStatus material-icons
             {{if eq .StatusView "container-running"}}
                 green
@@ -55,8 +55,8 @@
                         <li class="collection-header">
                             <div class="title-raw">
                                 <h3>Container info</h3>
-                                <div class="raw-wrapper"><a class='raw modal-trigger' href="#raw-data"
-                                                            role="button">raw</a></div>
+                                <div class="raw-wrapper">
+                                    <a class='raw modal-trigger' href="#raw-data" role="button">raw</a></div>
                             </div>
                         </li>
                         <div class="col s6">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col s6">
                             <li class="collection-item">
-                                <span class="key">Size : </span>{{.ShmSize}}
+                                <span class="key">Size : </span>{{.SizeRootFs}} MB
                             </li>
                             <li class="collection-item"><span class="key">Image :</span>
                                 {{range .RepoTags}}
@@ -99,7 +99,7 @@
                 <div class="col s6">
                     <ul class="collection">
                         <li class="collection-header"><h3>Environment</h3></li>
-                        <div class="col s6">
+                        <div class="col s12">
                             <li class="collection-item">
                                 <span class="key">Hostname : </span>{{.Hostname}}
                             </li>
@@ -107,16 +107,6 @@
                             <li class="collection-item"><span class="key">Path : </span>{{.Path}}</li>
                             <li class="collection-item"><span class="key">Env :</span>
                                 {{range .Env}}
-                                {{.}}
-                                {{end}}
-                            </li>
-                        </div>
-                        <div class="col s6">
-                            <li class="collection-item">
-                                <span class="key">Size : </span>{{.ShmSize}}
-                            </li>
-                            <li class="collection-item"><span class="key">Image :</span>
-                                {{range .RepoTags}}
                                 {{.}}
                                 {{end}}
                             </li>

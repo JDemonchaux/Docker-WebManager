@@ -26,16 +26,13 @@
         <h1>Containers</h1>
     </div>
     <div class="row">
-        <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
-            <a class="btn-floating btn-large red">
-                <i class="large mdi-navigation-menu"></i>
+        <div class="toolbar">
+            <a class="btn-floating tooltipped blue" data-position="top" data-tooltip="New Container">
+                <i class="material-icons">add</i>
             </a>
-            <ul>
-                <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-                <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-            </ul>
+            <a class="btn-floating tooltipped red" data-position="top" data-tooltip="Import">
+                <i class="material-icons">file_upload</i>
+            </a>
         </div>
     </div>
     <div class="row">
@@ -107,17 +104,16 @@
                     <a href="/containers/stop/{{.ID}}" class="btn-floating red btStop {{.StatusView}}">
                         <i class="material-icons">stop</i>
                     </a>
-                   <!-- <a data-href="#safe-delete" href="/containers/delete/{{.ID}}"
-                       class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
-                        <i class="material-icons">delete</i>
-                    </a>-->
+
                 </td>
                 <td>
                     <a href="#safe-delete" data-href="/containers/delete/{{.ID}}"
                        class="modal-trigger btn-floating grey darken-3 btDelete {{.StatusView}}">
                         <i class="material-icons">delete</i>
                     </a>
-
+                    <a href="#!" class="btn-floating green">
+                        <i class="material-icons">file_download</i>
+                    </a>
                     <a href="/containers/inspect/{{.ID}}" class="btn-floating indigo btInspect">
                         <i class="material-icons">search</i>
                     </a>

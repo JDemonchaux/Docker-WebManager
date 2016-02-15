@@ -18,6 +18,10 @@ ul#nav-mobile {
     color: black;
 }
 
+.toolbar {
+    padding-left:1rem;
+}
+
 main {
     margin-left: 242px;
     margin-top: -4rem;
@@ -67,6 +71,9 @@ td.status-text {
 .input-value {
     display: none;
 }
+
+
+
 
 /* cache les checkbx du tableau */
 /*th > .mdl-checkbox, td > .mdl-checkbox {*/
