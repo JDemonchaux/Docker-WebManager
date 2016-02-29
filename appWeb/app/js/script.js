@@ -75,11 +75,11 @@ $(document).ready(function () {
         var url = $("#formLogin").attr("action");
         console.log(url);
         var crypted = sha256(username + pass);
-
+        var data = { auth: crypted };
         $.ajax({
             type: "POST",
             url: url,
-            data: crypted
+            data: data
         });
         return false;
     });
