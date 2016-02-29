@@ -3,6 +3,7 @@ package settings
 import (
 	"os"
 	"encoding/json"
+	"bytes"
 )
 
 type SettingsType struct{
@@ -13,14 +14,14 @@ type SettingsType struct{
 
 
 func (s *SettingsType)ReadSettings() error {
-	fileConf, err := os.Open("dwm.settings")
-	defer fileConf.Close()
+	fileSettings, err := os.Open("dwm.settings")
+	defer fileSettings.Close()
 	if err != nil {
 		return err
 	}
 
-	jsonParser := json.NewDecoder(fileConf)
-	err = jsonParser.Decode(&s)
+	jsonSettings := json.NewDecoder(fileSettings)
+	err = jsonSettings.Decode(&s)
 	if err != nil {
 		return err
 	}
@@ -28,16 +29,18 @@ func (s *SettingsType)ReadSettings() error {
 }
 
 func (s *SettingsType)SavSettings() error{
-	jsonConfig, err := json.Marshal(s)
+	jsonSettings, err := json.Marshal(s)
 	if err != nil {
 		return err
 	}
+	var out bytes.Buffer
+	json.Indent(&out, jsonSettings, "", "\t")
 	f, err := os.Create("dwm.settings")
 	defer f.Close()
 	if err != nil {
 		return err
 	}
-	f.Write(jsonConfig)
+	f.Write(out.Bytes())
 	f.Close()
 	return nil
 }

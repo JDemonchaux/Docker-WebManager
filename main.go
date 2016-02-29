@@ -34,6 +34,7 @@ func main() {
 
 func server(){
 	http.Handle("/app/", http.FileServer(http.Dir("./appweb")))
+	
 	//http.HandleFunc("/containers",containers)
 	http.HandleFunc("/",containers)
 	//test login
