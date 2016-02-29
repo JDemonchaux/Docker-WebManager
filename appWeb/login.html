@@ -1,0 +1,53 @@
+{{define "index"}}
+{{template "header"}}
+
+<div class="row">
+    <div class="col s12 valign-wrapper">
+        <!-- BACKGROUND -->
+        <div class="row">
+            <div class="col s12 upSide bg-caf-bleu center-align">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 bottomSide bg-caf-vert">
+            </div>
+        </div>
+        <div class="row outer">
+            <div class="middle">
+                <div class="col s4">
+                    <p></p>
+                </div>
+
+                <div class="col s4 blocAuth">
+                    <div class="card">
+                        <div class="card-image">
+
+                        </div>
+                        <form action="" method="POST">
+                            <div class="card-content">
+
+                                <div class="input-field">
+                                    <input type="text" id="username" name="username" class="validate"/>
+                                    <label for="username">Nom d'utilisateur :</label>
+                                </div>
+                                <div class="input-field">
+                                    <input type="password" id="password" name="password" class="validate"/>
+                                    <label for="password">Mot de passe :</label>
+                                </div>
+                            </div>
+                            <div class="card-action center-align">
+                                <button class="btn waves-effect waves-light" name="action" type="submit">Se connecter
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s4">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    {{template "footer"}}
+    {{end}}
