@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('a.disabled').on('click', function(e) {
+    $('a.disabled').on('click', function (e) {
         e.preventDefault();
     });
     $(".modal-trigger").leanModal({
@@ -65,5 +65,22 @@ $(document).ready(function () {
     $("#bt-safe-delete").on('click', function () {
         var url = $("#form-safe-delete").attr("action", url);
         windows.location.href = url;
+    });
+
+
+    // Authentification
+    $(".authentificate").on('click', function () {
+        var username = $("#username").val();
+        var pass = $("#password").val();
+        var url = $("#formLogin").attr("action");
+        console.log(url);
+        var crypted = sha256(username + pass);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: crypted
+        });
+        return false;
     });
 });

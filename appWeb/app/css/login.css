@@ -1,0 +1,40 @@
+div.upSide {
+    position: fixed;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    z-index:1;
+}
+div.bottomSide {
+    position:fixed;
+    width:100%;
+    height:50%;
+    left:0;
+    top:50%;
+    z-index:1;
+}
+
+
+div.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left:0;
+    top:0;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+    z-index:999;
+}
+div.blocAuth {
+    margin-left: auto;
+    margin-right: auto;
+    z-index:3;
+}
+
+div.blocAuth > * {
+    z-index:999;
+}
