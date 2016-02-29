@@ -144,7 +144,6 @@ func containers(w http.ResponseWriter, req *http.Request) {
 	}
 
 	tmpl, err := template.ParseFiles("appWeb/header.html", "appWeb/index.html", "appWeb/footer.html")
-	template.New("test").Parse()
 
 	if err != nil {
 		log.Println(err)

@@ -15,7 +15,7 @@ func main() {
 
 	err := config.ReadSettings()
 	if err != nil {
-		config.ApiUrl = "http://192.168.0.254:2375/"
+		config.ApiUrl = "http://192.168.0.200:2375/"
 		config.BaseUrl = "http://127.0.0.1:8080/"
 		config.Sock = "/var/run/docker.sock"
 		config.SavSettings()
@@ -38,7 +38,7 @@ func server(){
 	//http.HandleFunc("/containers",containers)
 	http.HandleFunc("/",containers)
 	//test login
-	login := new(authentication.AuthenticationType)
+	login := authentication.New("admin", "admin")
 	http.HandleFunc("/login", login.Auth)
 
 	//route
