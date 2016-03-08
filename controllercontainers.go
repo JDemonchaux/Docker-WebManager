@@ -12,6 +12,11 @@ import (
 
 
 func containersStart(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/start", "", nil)
@@ -24,6 +29,11 @@ func containersStart(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersStop(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/stop", "", nil)
@@ -36,6 +46,11 @@ func containersStop(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersPause(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/pause", "", nil)
@@ -48,6 +63,11 @@ func containersPause(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersRestart(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/restart", "", nil)
@@ -60,6 +80,11 @@ func containersRestart(w http.ResponseWriter, req *http.Request) {
 	return
 }
 func containersUnpause(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	_, err := http.Post(config.ApiUrl + "containers/" + id[len(id) - 1] + "/unpause", "", nil)
@@ -73,6 +98,11 @@ func containersUnpause(w http.ResponseWriter, req *http.Request) {
 }
 
 func containersRename(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	name := strings.Split(req.PostFormValue("newName"),"/")
@@ -88,6 +118,11 @@ func containersRename(w http.ResponseWriter, req *http.Request) {
 }
 
 func containersDelete(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	id := strings.Split(req.URL.Path, "/")
 
 	client := &http.Client{}
@@ -113,6 +148,11 @@ func containersDelete(w http.ResponseWriter, req *http.Request) {
 }
 
 func containers(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	defer req.Body.Close()
 	log.Println("index")
 	lc := new(ListContainers)
@@ -156,6 +196,11 @@ func containers(w http.ResponseWriter, req *http.Request) {
 }
 
 func containersInspect(w http.ResponseWriter, req *http.Request) {
+	if Login.IsAuthenticated(req) != true {
+		Login.Auth(w, req)
+		return
+	}
+
 	defer req.Body.Close()
 	log.Println("containersInspect")
 	p := strings.Split(req.URL.Path, "/")

@@ -11,8 +11,6 @@ import (
 var config settings.SettingsType
 
 func main() {
-
-
 	err := config.ReadSettings()
 	if err != nil {
 		config.ApiUrl = "http://192.168.0.200:2375/"
@@ -28,19 +26,15 @@ func main() {
 		go unixSock(config.Sock)
 	}
 	server()
-
 }
 
+var Login = authentication.New("admin", "admin")
 
 func server(){
 	http.Handle("/app/", http.FileServer(http.Dir("./appweb")))
-	
+	http.HandleFunc("/login", Login.Auth)
 	//http.HandleFunc("/containers",containers)
 	http.HandleFunc("/",containers)
-	//test login
-	login := authentication.New("admin", "admin")
-	http.HandleFunc("/login", login.Auth)
-
 	//route
 	http.HandleFunc("/containers/rename/", containersRename)
 	http.HandleFunc("/containers/inspect/", containersInspect)
